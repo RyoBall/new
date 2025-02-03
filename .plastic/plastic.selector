@@ -1,4 +1,0 @@
-repository "学习卡牌@wechat_os_qy01utmawea8m5ntg1dwicxdk@cloud.cn"
-  path "/"
-    br "/main"
-    co "/main"
