@@ -11,6 +11,7 @@ public class electricburst : WeaponBase
         {
             if (!attacked)
             {
+                GetComponent<AudioSource>().Play();
                 for (int i = -range; i <= range; i++)
                 {
                     if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null)
@@ -29,7 +30,6 @@ public class electricburst : WeaponBase
             if (attackedenemy == enemycheced)
             {
                 Player.Instance.stepturns++;
-               
             }
         }
     }

@@ -11,7 +11,8 @@ public class hugesword : WeaponBase
         {
             if (!attacked) 
             {
-            for (int i = 1; i <= range; i++)
+                GetComponent<AudioSource>().Play();
+                for (int i = 1; i <= range; i++)
             {
                 if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null)
                 {

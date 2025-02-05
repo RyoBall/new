@@ -30,6 +30,7 @@ public class WeaponBase : MonoBehaviour
         {
             if (!attacked) 
             {
+                GetComponent<AudioSource>().Play();
                 for (int i = 1; i <= range; i++)
                 {
                     if(GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null) 
@@ -57,6 +58,7 @@ public class WeaponBase : MonoBehaviour
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns&&!shooted)
         {
             GameObject Instan;
+            GetComponent<AudioSource>().Play();
             Instan=Instantiate(Entity, Player.Instance.transform.position, Player.Instance.transform.rotation);
             Instan.GetComponent<EntityBase>().damage = attack;
             shooted = true;

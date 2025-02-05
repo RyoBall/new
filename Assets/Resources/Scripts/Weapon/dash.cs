@@ -14,6 +14,7 @@ public class dash : WeaponBase
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
             Player.Instance.rb.velocity = new Vector2(10 * Player.Instance.facingdir, 0);
+            GetComponent<AudioSource>().Play();
             if (lasttimes != times)
             {
                 lasttimes = times;
@@ -63,10 +64,9 @@ public class dash : WeaponBase
             }
             if (times == 3) 
             {
-                    Player.Instance.rb.velocity = Vector2.zero;
+                Player.Instance.rb.velocity = Vector2.zero;
                     Debug.Log("end");
                     Player.Instance.stepturns++;
-                    
             }
         }
     }

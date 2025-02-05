@@ -96,19 +96,11 @@ public class spring : WeaponBase
             {
                 Debug.Log("spring no target");
                 Player.Instance.stepturns++;
-                if (Player.Instance.stepturns == 5)
-                    Player.Instance.stepturns = -1;
             }
             else
             {
-                Player.Instance.rb.velocity = new Vector2(10*Player.Instance.facingdir, 0);
-                if ((Player.Instance.transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x&&Player.Instance.facingdir>0)||(Player.Instance.transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir < 0))
-                {
-                    Player.Instance.rb.velocity = Vector2.zero;
-                    Player.Instance.currentposition+=targetposition*Player.Instance.facingdir;
-                    Player.Instance.stepturns++;
-                    
-                }
+                Player.Instance.currentposition = targetposition;
+                Player.Instance.notspringed = true;
             }
         }
     }

@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public static List <string> Objectbag = new List<string>();//记录拥有的道具
     public int dashtargetposition;
     public bool dashed;
+    public bool notspringed;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -97,5 +98,13 @@ public class Player : MonoBehaviour
             dashed = true;
         }
         }
+    }
+    public void spring() 
+    {
+        GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("effect/change");
+        GetComponent<AudioSource>().Play();
+        transform.position=new Vector2(GameObject.Find("platform"+currentposition).transform.position.x,transform.position.y);
+        stepturns++;
+        notspringed = false;
     }
 }

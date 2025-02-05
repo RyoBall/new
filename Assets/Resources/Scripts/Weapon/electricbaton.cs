@@ -14,6 +14,7 @@ public class electricbaton : WeaponBase
         {
             if (!attacked)
             {
+                GetComponent<AudioSource>().Play();
                 for (int i = 1; i <= range; i++)
                 {
                     if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null)
@@ -33,7 +34,6 @@ public class electricbaton : WeaponBase
             if (attackedenemy > 0)
             {
                 Player.Instance.stepturns++;
-                
             }
         }
     }

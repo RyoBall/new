@@ -39,6 +39,7 @@ public class changer : WeaponBase
             {
                 if (!tip)
                 {
+                    GetComponent<AudioSource>().Play();
                     Debug.Log("choose one");
                     levelmanager.changerchoosing = true;
                     tip = true;
