@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3146511403940868038}
   - component: {fileID: 3000652016312646384}
   - component: {fileID: 1966381160382520416}
+  - component: {fileID: 7011956269673471191}
   m_Layer: 5
   m_Name: gettingsniperrifle
   m_TagString: Untagged
@@ -328,6 +329,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &7011956269673471191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065511594174627957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788a64f0562094245884ed609d6916bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9158541645221840370
 GameObject:
   m_ObjectHideFlags: 0

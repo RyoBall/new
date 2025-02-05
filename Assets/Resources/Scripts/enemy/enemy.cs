@@ -62,6 +62,14 @@ public class enemy : MonoBehaviour
         {
             facingdir = 1;
         }
+        if (facingdir == 1) 
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (facingdir == -1) 
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
         if (health <= 0&&!havedefense) 
         {
             dead = true;

@@ -7,11 +7,7 @@ using UnityEngine.SceneManagement;
 public class havebow : havebase
 {
    
-    private void OnMouseExit()
-    {
-        onmousetime = 0;
-        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
-    }
+
     public void Start()
     {
         isWeapon = true;

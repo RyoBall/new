@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+using UnityEngine.EventSystems;
 
 public class stepButton : MonoBehaviour
 {
@@ -25,11 +28,11 @@ public class stepButton : MonoBehaviour
     {
         if (bestepped) 
         {
-            GetComponentInChildren<TMPro.TMP_Text>().text = "x";
+            GetComponentInChildren<Image>().color = Color.red;
         }
         else 
         {
-            GetComponentInChildren<TMPro.TMP_Text>().text = ""+stepturns;
+            GetComponentInChildren<Image>().color = Color.white;
         }
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
@@ -166,4 +169,6 @@ public class stepButton : MonoBehaviour
             }
         }
     }
+
+   
 }

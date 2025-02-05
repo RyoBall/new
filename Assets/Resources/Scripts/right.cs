@@ -27,14 +27,10 @@ public class right : MonoBehaviour
             }
             else 
             {
-                Player.Instance.rb.velocity = new Vector2(5, 0);
-                if (Player.Instance.transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x)
-                {
-                    Player.Instance.rb.velocity = Vector2.zero;
+                Player.Instance.transform.position = new Vector2(GameObject.Find("platform"+targetposition).transform.position.x, Player.Instance.transform.position.y);
                     Player.Instance.currentposition++;
                     Player.Instance.stepturns++;
-                    
-                }
+                
             }
         }
     }

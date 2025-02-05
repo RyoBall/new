@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 3146511403940868038}
   - component: {fileID: 449214625644290563}
   - component: {fileID: 7617051276044927458}
+  - component: {fileID: -4845799965975586968}
   m_Layer: 5
   m_Name: gettingelectricburst
   m_TagString: Untagged
@@ -416,3 +417,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &-4845799965975586968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065511594174627957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788a64f0562094245884ed609d6916bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

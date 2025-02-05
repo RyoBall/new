@@ -15,7 +15,6 @@ public class havebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         onmouse = true;
-        Debug.Log(121);
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
@@ -23,6 +22,7 @@ public class havebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         onmouse = false;
         onmousetime = 0;
         GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+        GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
     public virtual void pressed(string name)
     {
@@ -56,6 +56,7 @@ public class havebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (onmousetime > 0.5f)
         {
             GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
+            GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
         }
     }
 }
