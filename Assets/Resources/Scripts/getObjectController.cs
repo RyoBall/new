@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class getObjectController : MonoBehaviour
 {
     public List<Transform> transforms;
-    public List<Transform> choosetransforms;
+    public List<RectTransform> choosetransforms;
+    public List<RectTransform> bagTransforms;
     public List<int> randnum;
-    public bool buttonClear;//选择界面的按钮是否被删除
+    public bool buttonClear;//
     public bool choiceGenerate;
     public static bool dicechoiceGenerate;
     public int winGenerate;
     public bool choosegenerate;
     public bool nogenerate;
+
+    [SerializeField] heimucontroller heimucontroller;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +31,16 @@ public class getObjectController : MonoBehaviour
         {
             for(int i = 0; i < choosetransforms.Count && i < Player.Weaponbag.Count; i++) 
             {
-                Instantiate(Resources.Load("prefab/choose/choose" + Player.Weaponbag[i]), choosetransforms[i].position, choosetransforms[i].rotation, this.transform);
+                Instantiate(Resources.Load("prefab/choose/choose" + Player.Weaponbag[i]), choosetransforms[i].position, choosetransforms[i].rotation, choosetransforms[i]);
+                Debug.Log($"{Player.Weaponbag[i]}鐢熸垚鐨勪綅缃湪{choosetransforms[i].position}");
             }
-                Instantiate(Resources.Load("prefab/choose/chooseend"), transform.Find("chooseend").position, transform.Find("chooseend").rotation, this.transform);
             choosegenerate = true;
         }
         else if(!GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard)
         {
         if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
         { 
-        if (GetComponent<heimucontroller>().loaded && !dicechoiceGenerate) 
+        if (heimucontroller.loaded && !dicechoiceGenerate) 
         {
             for(int i = 1; i <= 2; i++) 
             {
@@ -44,7 +48,7 @@ public class getObjectController : MonoBehaviour
             }
             dicechoiceGenerate = true;
         }
-        if (GetComponent<heimucontroller>().loaded&&!choiceGenerate) 
+        if (heimucontroller.loaded&&!choiceGenerate) 
         {
                     nogenerate = true;
                 if (Player.Instance.actions.Count == 3) 
@@ -115,7 +119,7 @@ public class getObjectController : MonoBehaviour
         }
         else if(GameObject.Find("levelmanager").GetComponent<levelmanager>().win)
         {
-            if (winGenerate==0&&GetComponentInParent<heimucontroller>().loaded) 
+            if (winGenerate==0&& heimucontroller.loaded) 
             {
                 for (int i = 0; i < transforms.Count && i <Player.Instance.Weaponobject.Count-Player.Weaponbag.Count+3; i++)
                 {
@@ -135,7 +139,7 @@ public class getObjectController : MonoBehaviour
                 winGenerate = 1;
                 randnum.Clear();
             }   
-            if (winGenerate==2&&GetComponentInParent<heimucontroller>().loaded) 
+            if (winGenerate==2&& heimucontroller.loaded) 
             {
                 for (int i = 0; i < transforms.Count && i <Player.Instance.otherobject.Count-Player.Objectbag.Count; i++)
                 {
@@ -161,5 +165,16 @@ public class getObjectController : MonoBehaviour
             SceneManager.LoadScene("level" + GameObject.Find("levelmanager").GetComponent<levelmanager>().currentlevel);
         }
         }
+        UpdateBagInfo();
     }
+    public void UpdateBagInfo()
+    {
+        for (int i = 0; i < bagTransforms.Count && i < Player.Instance.Weaponbackpack.Count; i++)
+        {
+            Instantiate(Resources.Load("prefab/choose/choose" + Player.Instance.Weaponbackpack[i]), bagTransforms[i].position, bagTransforms[i].rotation, bagTransforms[i]);
+            //Debug.Log($"{Player.Weaponbag[i]}鐢熸垚鐨勪綅缃湪{choosetransforms[i].position}");
+        }
+    }
+
 }
+

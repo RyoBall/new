@@ -10,9 +10,13 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public bool generated;
     public bool onmouse;
     public float onmousetime;
+
+    [SerializeField] GameObject selected;
     // Start is called before the first frame update
     void Start()
     {
+        chosen = false;
+        selected .SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,6 +34,12 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
             GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
         }
+
+        if (chosen)
+        {
+            selected.SetActive(true);
+        }
+        else selected.SetActive(false); 
     }
     public virtual void pressed(string name) 
     {
