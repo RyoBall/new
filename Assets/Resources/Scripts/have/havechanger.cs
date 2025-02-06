@@ -9,7 +9,6 @@ public class havechanger : havebase
     public override void OnPointerEnter(PointerEventData eventData)
     {
         onmouse = true;
-        Debug.Log(121);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
@@ -17,6 +16,7 @@ public class havechanger : havebase
         onmouse = false;
         onmousetime = 0;
         GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+        GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
    
     public void Start()
