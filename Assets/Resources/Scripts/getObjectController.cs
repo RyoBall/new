@@ -47,13 +47,13 @@ public class getObjectController : MonoBehaviour
             uiSelectPanel.SetActive(false);
             uiChooseCard.SetActive(true);
             if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
-        { 
+            { 
 
         if (heimucontroller.loaded && !dicechoiceGenerate) 
         {
             for(int i = 1; i <= 2; i++) 
             {
-               Instantiate(Resources.Load<GameObject>("prefab/dicing/action"+i ), transforms[i].position, transforms[i].rotation, this.transform);
+               Instantiate(Resources.Load<GameObject>("prefab/dicing/action"+i ), transforms[i].position, transforms[i].rotation, transforms[i]);
             }
             dicechoiceGenerate = true;
         }
@@ -74,7 +74,7 @@ public class getObjectController : MonoBehaviour
                     }
                 }
                 randnum.Add(m);
-                Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation,this.transform);
+                Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                 }
                 }
                 else if (Player.Instance.actions.Count==5) 
@@ -95,7 +95,7 @@ public class getObjectController : MonoBehaviour
                             }
                         }
                         randnum.Add(m);
-                        Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation, this.transform);
+                        Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                     }
                 }
                 for(int i = 0; i < Player.Instance.allobject.Count; i++) 
@@ -144,7 +144,7 @@ public class getObjectController : MonoBehaviour
                     }
                     if(m!=-1)
                     randnum.Add(m);
-                    Instantiate(Resources.Load<GameObject>("prefab/have/have" + Player.Instance.Weaponobject[m]), transforms[i].position, transforms[i].rotation, this.transform);
+                    Instantiate(Resources.Load<GameObject>("prefab/have/have" + Player.Instance.Weaponobject[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                 } 
                 winGenerate = 1;
                 randnum.Clear();
@@ -163,7 +163,7 @@ public class getObjectController : MonoBehaviour
                         }
                     }
                     randnum.Add(m);
-                    Instantiate(Resources.Load<GameObject>("prefab/have/have" + Player.Instance.otherobject[m]), transforms[i].position, transforms[i].rotation, this.transform);
+                    Instantiate(Resources.Load<GameObject>("prefab/have/have" + Player.Instance.otherobject[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                 }
                 randnum.Clear();
                 winGenerate = 3;
