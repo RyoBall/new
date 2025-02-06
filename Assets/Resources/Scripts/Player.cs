@@ -14,21 +14,21 @@ public class Player : MonoBehaviour
     public bool turnend;
     public static Player Instance;
     public Rigidbody2D rb;
-    public int stepturns;//µ±Ç°½øÐÐµ½µÄstepÊý£¬µ±ÊýÖµÎªÒ»Ê±¿ªÊ¼½øÐÐµÚÒ»²½µÄº¯Êý,ÀàÍÆÖ±µ½5Ê±±äÎª-1£¬Îª-1Ê±ËµÃ÷½øÈëÁËÏÂÒ»¸ö»ØºÏ,µ÷ÕûuiµÈ½áÊøºó±äÎª0£¬½øÈë»ØºÏ
-    public List<string> actions = new List<string>();//Íæ¼ÒÓµÓÐµÄÐÐ¶¯µÄÃû×ÖÁÐ±í
-    public List<string> backpack = new List<string>();//Íæ¼Òµ±Ç°¼ÓÔØµÄµÀ¾ßÁÐ±í
-    public List<string> Objectbackpack = new List<string>();//Íæ¼Ò±³°üµÄµÀ¾ßÁÐ±í
-    public List<string> Weaponbackpack = new List<string>();//Íæ¼Ò±³°üµÄÎäÆ÷ÁÐ±í
-    public int currentposition;//´ú±íµ±Ç°ËùÔÚµÄ¸ñÊý
+    public int stepturns;//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½stepï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÎªÒ»Ê±ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½5Ê±ï¿½ï¿½Îª-1ï¿½ï¿½Îª-1Ê±Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Øºï¿½,ï¿½ï¿½ï¿½ï¿½uiï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½
+    public List<string> actions = new List<string>();//ï¿½ï¿½ï¿½Óµï¿½Ðµï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    public List<string> backpack = new List<string>();//ï¿½ï¿½Òµï¿½Ç°ï¿½ï¿½ï¿½ØµÄµï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    public List<string> Objectbackpack = new List<string>();//ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    public List<string> Weaponbackpack = new List<string>();//ï¿½ï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    public int currentposition;//ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ÚµÄ¸ï¿½ï¿½ï¿½
     public List<string> Objectused = new List<string>();
     public List<int> stepposition = new List<int>();
     public List<int> stepfacingdir = new List<int>();
-    public List<string> allobject = new List<string>();//¼ÇÂ¼ËùÓÐµÄÎäÆ÷µÀ¾ß
+    public List<string> allobject = new List<string>();//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public List <string> Weaponobject = new List<string>();
     public List <string> otherobject = new List<string>();
-    public static List<string> Wholebackpack = new List<string>();//Íæ¼Ò×Ü±³°üÁÐ±í
-    public static List <string> Weaponbag = new List<string>();//¼ÇÂ¼ÓµÓÐµÄÎäÆ÷
-    public static List <string> Objectbag = new List<string>();//¼ÇÂ¼ÓµÓÐµÄµÀ¾ß
+    public static List<string> Wholebackpack = new List<string>();//ï¿½ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    public static List <string> Weaponbag = new List<string>();//ï¿½ï¿½Â¼Óµï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
+    public static List <string> Objectbag = new List<string>();//ï¿½ï¿½Â¼Óµï¿½ÐµÄµï¿½ï¿½ï¿½
     public int dashtargetposition;
     public bool dashed;
     public bool notspringed;
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         {
             backpack = Weaponbackpack;
         }
-        if (stepturns == -1)//-1²½µÄ´úÂë 
+        if (stepturns == -1)//-1ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ 
         {
             for (int i = 0; i < 4; i++)
             {
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
             dashed = true;
             dashtargetposition = 0;
         }
-        if (stepturns > 0) //»ØºÏ¿ªÊ¼ºóµÄ´úÂë£¬±È-1²½Ê±¼äÉÏÓÅÏÈ¼¶¸ß
+        if (stepturns > 0) //ï¿½ØºÏ¿ï¿½Ê¼ï¿½ï¿½Ä´ï¿½ï¿½ë£¬ï¿½ï¿½-1ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½
         {
             if (actions.Count >= 5) 
             {
@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (lastturn != turn) //»ØºÏ×ª»»µÄ´úÂë£¬ÔÚ-1²½Ö»Ö´ÐÐÒ»´Î,µÚÒ»»ØºÏ²»Ö´ÐÐ
+        if (lastturn != turn) //ï¿½Øºï¿½×ªï¿½ï¿½ï¿½Ä´ï¿½ï¿½ë£¬ï¿½ï¿½-1ï¿½ï¿½Ö»Ö´ï¿½ï¿½Ò»ï¿½ï¿½,ï¿½ï¿½Ò»ï¿½ØºÏ²ï¿½Ö´ï¿½ï¿½
         {
             health--;
             lastturn = turn;

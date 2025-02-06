@@ -8,7 +8,6 @@ public class getObjectController : MonoBehaviour
 {
     public List<Transform> transforms;
     public List<RectTransform> choosetransforms;
-    public List<RectTransform> bagTransforms;
     public List<int> randnum;
     public bool buttonClear;//
     public bool choiceGenerate;
@@ -18,11 +17,16 @@ public class getObjectController : MonoBehaviour
     public bool nogenerate;
 
     [SerializeField] heimucontroller heimucontroller;
+    [SerializeField] GameObject uiSelectPanel;
+    [SerializeField] GameObject uiChooseCard;
     // Start is called before the first frame update
     void Start()
     {
         dicechoiceGenerate = true;
+        uiChooseCard.SetActive(false);
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -35,11 +39,16 @@ public class getObjectController : MonoBehaviour
                 Debug.Log($"{Player.Weaponbag[i]}生成的位置在{choosetransforms[i].position}");
             }
             choosegenerate = true;
+            uiChooseCard.SetActive(false);
+            uiSelectPanel.SetActive(true);
         }
         else if(!GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard)
         {
-        if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
+            uiSelectPanel.SetActive(false);
+            uiChooseCard.SetActive(true);
+            if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
         { 
+
         if (heimucontroller.loaded && !dicechoiceGenerate) 
         {
             for(int i = 1; i <= 2; i++) 
@@ -105,6 +114,7 @@ public class getObjectController : MonoBehaviour
             buttonClear = false;
             choiceGenerate = true;
         }
+
         if (Player.Instance.stepturns != -1&&buttonClear==false) 
         {
             for(int i = 0; i < Player.Wholebackpack.Count;i++) 
@@ -165,16 +175,6 @@ public class getObjectController : MonoBehaviour
             SceneManager.LoadScene("level" + GameObject.Find("levelmanager").GetComponent<levelmanager>().currentlevel);
         }
         }
-        UpdateBagInfo();
     }
-    public void UpdateBagInfo()
-    {
-        for (int i = 0; i < bagTransforms.Count && i < Player.Instance.Weaponbackpack.Count; i++)
-        {
-            Instantiate(Resources.Load("prefab/choose/choose" + Player.Instance.Weaponbackpack[i]), bagTransforms[i].position, bagTransforms[i].rotation, bagTransforms[i]);
-            //Debug.Log($"{Player.Weaponbag[i]}生成的位置在{choosetransforms[i].position}");
-        }
-    }
-
 }
 

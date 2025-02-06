@@ -7,6 +7,7 @@ public class heimucontroller : MonoBehaviour
 {
     public float loadingtime;
     public bool loaded;
+    [SerializeField] GameObject uiSelectPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,14 @@ public class heimucontroller : MonoBehaviour
             loaded = false;
         }
         loadingtime += Time.deltaTime;
-        if (((Player.Instance.stepturns==-1 || levelmanager.dicing || levelmanager.dicingchoose) &&loadingtime > 0.04f)&& GetComponent<Image>().color.a<=0.8)
+
+        if(Player.Instance.stepturns == -1)
+        {
+            uiSelectPanel.SetActive(true);
+        }
+        else uiSelectPanel.SetActive(false);
+
+            if (((Player.Instance.stepturns==-1 || levelmanager.dicing || levelmanager.dicingchoose) &&loadingtime > 0.04f)&& GetComponent<Image>().color.a<=0.8)
         {
             GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, GetComponent<Image>().color.a + 0.1f);
             loadingtime = 0;

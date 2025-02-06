@@ -5,6 +5,7 @@ using UnityEngine;
 public class chooseend : MonoBehaviour
 {
     public getObjectController gocins;
+
     public void pressed() 
     {
         for(int i = 0; i <GameObject.Find("mask").GetComponent<getObjectController>().choosetransforms.Count && i < Player.Weaponbag.Count; i++) 
@@ -15,6 +16,7 @@ public class chooseend : MonoBehaviour
             }
         }
         GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard = false;
-        Destroy(gameObject);
+
+        gameObject.SetActive(false);
     }
 }
