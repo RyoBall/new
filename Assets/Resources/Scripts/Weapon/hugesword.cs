@@ -30,7 +30,6 @@ public class hugesword : WeaponBase
             if (attackedenemy == enemycheced)
             {
                 Player.Instance.stepturns++;
-               
             }
         }
     }

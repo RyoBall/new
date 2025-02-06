@@ -48,6 +48,8 @@ public class enemy : MonoBehaviour
     public void Start()
     { 
         animator = GetComponent<Animator>();
+        health = 4;
+        healthmax = 4;
        lasthealth = health;
     }
 
@@ -77,6 +79,7 @@ public class enemy : MonoBehaviour
         if (lasthealth > health&&!dead) 
         {
             attacked = true;
+            lasthealth=health;
         }
         if (health < 0) 
         {
@@ -115,7 +118,7 @@ public class enemy : MonoBehaviour
             }
             else
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(5*dir, 0);
+                GetComponent<Rigidbody2D>().velocity = new Vector2(30*dir, 0);
                 if ((transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x&&dir>0)|| (transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && dir < 0))
                 {
                     Debug.Log("movfinish");
@@ -138,5 +141,9 @@ public class enemy : MonoBehaviour
     {
         notfinished = false;    
         gameObject.SetActive(false);
+    }
+    public virtual void startdie() 
+    {
+        notfinished = true;
     }
 }

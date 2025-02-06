@@ -37,10 +37,10 @@ public class portalenemy : enemy
 
     private new void Start()
     {
-        lasthealth = health;
         animator = GetComponent<Animator>();
         health = 2;
         healthmax = 2;
+        lasthealth = health;
         lastturn=Player.Instance.turn;
     }
     public void portal() 
@@ -63,5 +63,10 @@ public class portalenemy : enemy
     public void portalend() 
     {
         notfinished = false;
+    }
+
+    public override void startdie()
+    {
+        base.startdie();
     }
 }

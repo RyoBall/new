@@ -93,7 +93,7 @@ public class boss : enemy
     new void Start()
     {
             health = 40;
-            healthmax = 40;
+            healthmax = 40; lasthealth = health;
     }
 
    

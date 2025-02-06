@@ -23,5 +23,6 @@ public class normalenemy : enemy
     {
         health = 6;
         healthmax = 6;
+        lasthealth = health;
     }
 }

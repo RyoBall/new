@@ -39,6 +39,7 @@ public class defendenemy : enemy
     {
         health = 8;
         healthmax = 8;
+        lasthealth=health;
         havedefense = true;
     }
 }

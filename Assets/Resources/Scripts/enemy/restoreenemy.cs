@@ -31,11 +31,17 @@ public class restoreenemy : enemy
     {
         health = 6;
         healthmax = 6;
+        lasthealth = health;
     }
     public void restored() 
     {
         health = healthmax;
         restore = false;
         notfinished=false;
+    }
+
+    public override void startdie()
+    {
+        base.startdie();
     }
 }

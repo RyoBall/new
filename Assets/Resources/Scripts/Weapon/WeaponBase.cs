@@ -13,6 +13,7 @@ public class WeaponBase : MonoBehaviour
     public int attack;
     public int attackedenemy;
     public bool attacked;
+    public bool mingzhong;
     public GameObject Entity;
     // Start is called before the first frame update
     void Start()
@@ -41,15 +42,15 @@ public class WeaponBase : MonoBehaviour
                     {
                         GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().Damage = attack;
                         GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().PlayerAttackHere = true;
+                        mingzhong = true;
                         break;
                     }
                 }
                     attacked = true;
             }
-            if (attackedenemy > 0) 
+            if (attackedenemy > 0||!mingzhong) 
             {
                 Player.Instance.stepturns++;
-               
             }
         }
     }
@@ -77,7 +78,7 @@ public class WeaponBase : MonoBehaviour
             {
                 for (int i = 1; i < step; i++)
                 {
-                    if (GameObject.Find("step" + (GetComponentInParent<stepButton>().stepturns + i)) == null || GameObject.Find("step" + (GetComponentInParent<stepButton>().stepturns + i)).GetComponent<stepButton>().havestep)
+                    if (GameObject.Find("step" + (GetComponentInParent<stepButton>().stepturns + i)) == null || GameObject.Find("step" + (GetComponentInParent<stepButton>().stepturns + i)).GetComponent<stepButton>().havestep|| GameObject.Find("step" + (GetComponentInParent<stepButton>().stepturns + i)).GetComponent<stepButton>().bestepped)
                     {
                         GetComponentInParent<stepButton>().havestep = false;
                         GetComponentInParent<stepButton>().stepname = null;
@@ -99,8 +100,6 @@ public class WeaponBase : MonoBehaviour
                 }
                 GetComponentInParent<stepButton>().stepenough = false;
             }
-            Debug.Log(GetComponentInParent<stepButton>().stepname);
-        
         Destroy(gameObject);
     }
 }

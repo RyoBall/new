@@ -34,6 +34,11 @@ public class stepButton : MonoBehaviour
         {
             GetComponentInChildren<Image>().color = Color.white;
         }
+        if (havestep)
+        {
+            Debug.Log("havestep");
+            GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("icon" + stepname + "-export");
+        }
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
             Debug.Log("skip");

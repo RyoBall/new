@@ -23,5 +23,6 @@ public class bigenemy :enemy
     {
         health = 10;
         healthmax = 10;
+        lasthealth = health;
     }
 }

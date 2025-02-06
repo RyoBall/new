@@ -243,7 +243,8 @@ MonoBehaviour:
   electricted: 0
   laststepturns: 0
   havedefense: 0
-  animator: {fileID: 0}
+  animator: {fileID: 5237764301664585931}
+  restore: 0
 --- !u!1 &2114805811105487948
 GameObject:
   m_ObjectHideFlags: 0

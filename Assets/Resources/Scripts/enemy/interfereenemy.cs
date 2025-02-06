@@ -29,5 +29,6 @@ public class interfereenemy : enemy
     {
         health = 2;
         healthmax = 2;
+        lasthealth = health;
     }
 }
