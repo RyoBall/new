@@ -28,16 +28,20 @@ public class stepButton : MonoBehaviour
     {
         if (bestepped) 
         {
-            GetComponentInChildren<Image>().color = Color.red;
+            transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.red;
         }
         else 
         {
-            GetComponentInChildren<Image>().color = Color.white;
+            transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.white;
         }
         if (havestep)
         {
             Debug.Log("havestep");
-            GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("icon" + stepname + "-export");
+            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + stepname + "-export");
+        }
+        else 
+        {
+            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = null;
         }
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
