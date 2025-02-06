@@ -40,11 +40,14 @@ public class havebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else 
         {
            GameObject.Find("mask").GetComponent<getObjectController>().winGenerate = 2;
-            for (int i = 0; i < Player.Instance.Weaponobject.Count; i++) 
+            for(int j = 0; j < 3; j++) 
             {
-            if(GameObject.Find("mask").GetComponent<getObjectController>().transform.Find("have"+Player.Instance.Weaponobject[i]+"(Clone)") != null) 
+                for (int i = 0; i < Player.Instance.Weaponobject.Count; i++) 
                 {
-                    Destroy(GameObject.Find("mask").GetComponent<getObjectController>().transform.Find("have" + Player.Instance.Weaponobject[i] + "(Clone)").gameObject);
+                    if (GameObject.Find("mask").GetComponent<getObjectController>().transforms[j].Find("have"+Player.Instance.Weaponobject[i]+"(Clone)") != null) 
+                    {
+                        Destroy(GameObject.Find("mask").GetComponent<getObjectController>().transforms[j].Find("have" + Player.Instance.Weaponobject[i] + "(Clone)").gameObject);
+                    }
                 }
             }
         }

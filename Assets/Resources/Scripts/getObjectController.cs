@@ -134,6 +134,7 @@ public class getObjectController : MonoBehaviour
         }
         else if(GameObject.Find("levelmanager").GetComponent<levelmanager>().win)
         {
+                        uiChooseCard.SetActive(true);
             if (winGenerate==0&& heimucontroller.loaded) 
             {
                 for (int i = 0; i < transforms.Count && i <Player.Instance.Weaponobject.Count-Player.Weaponbag.Count+3; i++)
