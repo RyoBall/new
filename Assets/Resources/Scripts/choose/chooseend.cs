@@ -16,7 +16,6 @@ public class chooseend : MonoBehaviour
             }
         }
         GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard = false;
-
         gameObject.SetActive(false);
     }
 }

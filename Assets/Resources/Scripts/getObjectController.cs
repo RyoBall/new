@@ -25,9 +25,6 @@ public class getObjectController : MonoBehaviour
         dicechoiceGenerate = true;
         uiChooseCard.SetActive(false);
     }
-
-    
-
     // Update is called once per frame
     void Update()
     {
@@ -45,7 +42,6 @@ public class getObjectController : MonoBehaviour
         else if(!GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard)
         {
             uiSelectPanel.SetActive(false);
-            uiChooseCard.SetActive(true);
             if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
             { 
 
@@ -59,6 +55,7 @@ public class getObjectController : MonoBehaviour
         }
         if (heimucontroller.loaded&&!choiceGenerate) 
         {
+                uiChooseCard.SetActive(true);
                     nogenerate = true;
                 if (Player.Instance.actions.Count == 3) 
                 {
@@ -98,11 +95,14 @@ public class getObjectController : MonoBehaviour
                         Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                     }
                 }
-                for(int i = 0; i < Player.Instance.allobject.Count; i++) 
+                    for(int j = 0; j < 3; j++)
                     {
-                        if (transform.Find("getting" + Player.Instance.allobject[i] + "(Clone)") != null) 
+                        for(int i = 0; i < Player.Instance.allobject.Count; i++) 
                         {
-                            nogenerate = false;
+                            if (transforms[j].Find("getting" + Player.Instance.allobject[i] + "(Clone)") != null) 
+                            {
+                                nogenerate = false;
+                            }
                         }
                     }
                     if (nogenerate) 
@@ -115,17 +115,22 @@ public class getObjectController : MonoBehaviour
             choiceGenerate = true;
         }
 
-        if (Player.Instance.stepturns != -1&&buttonClear==false) 
-        {
-            for(int i = 0; i < Player.Wholebackpack.Count;i++) 
-            {
-                if (transform.Find("getting"+Player.Wholebackpack[i]+"(Clone)") != null) 
+                if (Player.Instance.stepturns != -1 && buttonClear == false)
                 {
-                    Destroy(transform.Find("getting"+Player.Wholebackpack[i]+"(Clone)").gameObject);
+                    for (int j = 0; j < 3; j++) 
+                    {
+                        for(int i = 0; i < Player.Wholebackpack.Count;i++) 
+                        {
+                            if (transforms[j].Find("getting"+Player.Wholebackpack[i]+"(Clone)") != null) 
+                            {
+                                Destroy(transforms[j].Find("getting"+Player.Wholebackpack[i]+"(Clone)").gameObject);
+                                Debug.Log("destroy");
+                            }
+                        }
+                    }
+                        buttonClear = true;
+                        uiChooseCard.SetActive(false);
                 }
-            }
-            buttonClear = true;
-        }
         }
         else if(GameObject.Find("levelmanager").GetComponent<levelmanager>().win)
         {
