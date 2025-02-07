@@ -128,7 +128,6 @@ public class enemy : MonoBehaviour
                     dir = 0;
                     step = 0;
                     Player.Instance.stepturns++;
-                   
                 }
             }
         }

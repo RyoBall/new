@@ -67,25 +67,9 @@ public class EntityBase : MonoBehaviour
         {
             if (!collision.GetComponent<enemy>().dead) 
             {
-            /*collision.gameObject.GetComponent<enemy>().health -= damage;
-            Player.Instance.stepturns++;
-            if (Player.Instance.stepturns == 5)
-            {
-                Player.Instance.stepturns = -1;
-                Player.Instance.turn++;
-               GameObject.Find("mask").GetComponent<getObjectController>().choiceGenerate = false;
-            }*/
-         /*   for(;true;) 
-            {
-                int i = Random.Range(0, GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys.Count);
-                if (GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys[i].GetComponent<enemy>().currentposition == collision.GetComponent<enemy>().currentposition&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys[i].GetComponent<enemy>().dead) 
-                {
-                        break;
-                }
-            }*/
             collision.gameObject.GetComponent<enemy>().health -= damage;
+            Debug.Log("attach");
             Player.Instance.stepturns++;
-            
             Destroy(gameObject);
             }
         }

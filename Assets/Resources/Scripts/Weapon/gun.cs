@@ -18,7 +18,7 @@ public class gun : WeaponBase
     void Start()
     {
         step = 2;
-        attack = 6;
+        attack = 5;
         range = 5;
     }
 

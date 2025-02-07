@@ -9,10 +9,16 @@ public class dash : WeaponBase
     public int movesteps;
     public int times = 0;
     public int lasttimes = -1;
+    public bool setdashstart;
     public override void function()
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
+            if (!setdashstart) 
+            {
+                Player.Instance.dashed = false;
+                setdashstart = true;
+            }
             Player.Instance.rb.velocity = new Vector2(10 * Player.Instance.facingdir, 0);
             GetComponent<AudioSource>().Play();
             if (lasttimes != times)
@@ -79,6 +85,7 @@ public class dash : WeaponBase
             GetComponentInParent<stepButton>().stepname = null;
             GetComponentInParent<stepButton>().stepenough = false;
             GetComponentInParent<stepButton>().choiceclear = false;
+            GetComponentInParent<stepButton>().pressed = false;
             Debug.Log("no target");
         }
         else 
@@ -109,8 +116,8 @@ public class dash : WeaponBase
     void Start()
     {
         range = 3;
-        step = 1;
-        attack =1;
+        step = 2;
+        attack =4;
     }
 
     // Update is called once per frame

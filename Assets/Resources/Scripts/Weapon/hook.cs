@@ -18,7 +18,7 @@ public class hook : WeaponBase
     void Start()
     {
         step = 1;
-        range = 4;
+        range = 5;
         attack = 1;
     }
 

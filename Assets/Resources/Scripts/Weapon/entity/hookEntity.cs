@@ -22,7 +22,7 @@ public class hookEntity : EntityBase
                 collision.gameObject.GetComponent<enemy>().health -= damage;
                 collision.gameObject.GetComponent<enemy>().ismoving =true;
                 collision.gameObject.GetComponent<enemy>().dir=Player.Instance.facingdir*(-1);
-                collision.gameObject.GetComponent<enemy>().step=1;
+                collision.gameObject.GetComponent<enemy>().step= (collision.gameObject.GetComponent<enemy>().currentposition-Player.Instance.currentposition)*Player.Instance.facingdir-1;
                 break;
             }
         }

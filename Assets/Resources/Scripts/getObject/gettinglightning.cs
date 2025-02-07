@@ -1,19 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class gettinglightning : MonoBehaviour
+public class gettinglightning : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public float onmousetime;
+    public bool onmouse;
+    public void OnPointerExit(PointerEventData eventData)
     {
-        
+        onmousetime = 0;
+        onmouse = false;
+        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+        GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        onmouse = true;
+    }
     void Update()
     {
-        
+        if (onmouse)
+        {
+            onmousetime += Time.deltaTime;
+        }
+        if (onmousetime > 0.5f)
+        {
+            GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
+            GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
+        }
     }
     public void pressed()
     {

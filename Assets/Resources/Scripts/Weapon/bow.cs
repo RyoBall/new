@@ -20,7 +20,7 @@ public class bow : WeaponBase
     void Start()
     {
         range = 4;
-        attack = 1;
+        attack = 2;
         step = 1;
     }
 

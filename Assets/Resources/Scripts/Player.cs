@@ -32,6 +32,19 @@ public class Player : MonoBehaviour
     public int dashtargetposition;
     public bool dashed;
     public bool notspringed;
+    [Header("animevent")]
+    public Animator anim;
+    public bool knife;
+    public bool bow;
+    public bool gun;
+    public bool sword;
+    public bool hugesword;
+    public bool dash;
+    public bool baton;
+    public bool burst;
+    public bool sniper;
+    public bool hook;
+    public bool move;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -49,6 +62,26 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("bow", bow);
+        anim.SetBool("knife", knife);
+        anim.SetBool("gun", gun);
+        anim.SetBool("bow", bow);
+        anim.SetBool("sword", sword);
+        anim.SetBool("hugesword", hugesword);
+        anim.SetBool("dash", dash);
+        anim.SetBool("baton", baton);
+        anim.SetBool("burst", burst);
+        anim.SetBool("sniper", sniper);
+        anim.SetBool("hook", hook);
+        anim.SetBool("move", move);
+        if (facingdir == 1)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else 
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
         Objectbackpack = Objectbag;
         if (actions.Count >= 4)
         {
