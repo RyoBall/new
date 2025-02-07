@@ -11,14 +11,14 @@ public class levelmanager : MonoBehaviour
     public static bool changerchoosing;
     public static bool dicingchoose;
     public static bool dicing;
-    public static int dicingstep;//Òª¸ü¸ÄµÄÎäÆ÷µÄ¸ñÊý
+    public static int dicingstep;//Òªï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
     public  bool win;
     public  bool lose;
     public int currentlevel;
     public static bool notfirstplay;
     public bool choosecard;
-    public int maprange;//µØÍ¼¸ñÊý 
-    public bool notfinished;//µÐÈËÊÇ·ñ½áËãÍê³É
+    public int maprange;//ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ 
+    public bool notfinished;//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     // Start is called before the first frame update
     void Start()
     {
