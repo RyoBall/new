@@ -7,7 +7,12 @@ public class hookEntity : EntityBase
     
     public override void function()
     {
-        base.function();
+        rb.velocity = new Vector2(20 * Player.Instance.facingdir, 0);
+        if ((transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == 1) || (transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == -1))
+        {
+            Player.Instance.hooknotattached = true;
+            Destroy(gameObject);
+        }
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +28,7 @@ public class hookEntity : EntityBase
                 collision.gameObject.GetComponent<enemy>().ismoving =true;
                 collision.gameObject.GetComponent<enemy>().dir=Player.Instance.facingdir*(-1);
                 collision.gameObject.GetComponent<enemy>().step= (collision.gameObject.GetComponent<enemy>().currentposition-Player.Instance.currentposition)*Player.Instance.facingdir-1;
+                Player.Instance.hookattached = true;
                 break;
             }
         }

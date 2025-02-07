@@ -31,7 +31,11 @@ public class Player : MonoBehaviour
     public static List <string> Objectbag = new List<string>();//��¼ӵ�еĵ���
     public int dashtargetposition;
     public bool dashed;
+    public int targetposition;
     public bool notspringed;
+    public int turnvector;
+    public List<GameObject> steps = new List<GameObject>();
+    public Transform shootposition;
     [Header("animevent")]
     public Animator anim;
     public bool knife;
@@ -45,6 +49,8 @@ public class Player : MonoBehaviour
     public bool sniper;
     public bool hook;
     public bool move;
+    public bool hookattached;
+    public bool hooknotattached;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -74,6 +80,8 @@ public class Player : MonoBehaviour
         anim.SetBool("sniper", sniper);
         anim.SetBool("hook", hook);
         anim.SetBool("move", move);
+        anim.SetBool("attached", hookattached);
+        anim.SetBool("notattached", hooknotattached);
         if (facingdir == 1)
         {
             GetComponent<SpriteRenderer>().flipX = false;
@@ -136,8 +144,33 @@ public class Player : MonoBehaviour
     {
         GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("effect/change");
         GetComponent<AudioSource>().Play();
-        transform.position=new Vector2(GameObject.Find("platform"+currentposition).transform.position.x,transform.position.y);
+        facingdir = turnvector;
+        if (GameObject.Find("platform" + targetposition) != null && !GameObject.Find("platform" +targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
+        {   
+            transform.position=new Vector2(GameObject.Find("platform"+targetposition).transform.position.x,transform.position.y);
+            currentposition=targetposition;
+        }
+    }
+    public void attack() 
+    {
+        GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().attacked=false;
+        GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().shooted=false;
+    }
+    public void finish() 
+    {
+        bow=false;
+        knife=false;
+        gun=false;
+        sniper=false;
+        baton=false;
+        burst=false;
+        hugesword=false;
+        sword=false;
+        dash = false;
+    }
+    public void springfinish() 
+    {
+        move=false;
         stepturns++;
-        notspringed = false;
     }
 }

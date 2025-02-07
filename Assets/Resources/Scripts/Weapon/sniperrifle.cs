@@ -6,6 +6,7 @@ public class sniperrifle : WeaponBase
 {
     private void Start()
     {
+        shooted = true;
         step = 4;
         attack = 10;
         range = 10;
@@ -15,12 +16,14 @@ public class sniperrifle : WeaponBase
         base.pressed("sniperrifle");
     }
 
-    public override void shootfunction(GameObject Entity)
-    {
-        base.shootfunction(Entity);
-    }
+    
     private void Update()
     {
-        shootfunction(Entity);
+        shootfunction(Entity, Player.Instance.sniper);
+    }
+
+    public override void shootfunction(GameObject Entity, bool players)
+    {
+        base.shootfunction(Entity, players);
     }
 }

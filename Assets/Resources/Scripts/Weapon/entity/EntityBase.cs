@@ -49,6 +49,7 @@ public class EntityBase : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
+       
         function();
     }
     public virtual void function() 
@@ -56,8 +57,6 @@ public class EntityBase : MonoBehaviour
         rb.velocity = new Vector2(20*Player.Instance.facingdir,0);
         if((transform.position.x>=GameObject.Find("platform"+targetposition).transform.position.x&&Player.Instance.facingdir==1)|| (transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == -1)) 
         {
-            Player.Instance.stepturns++;
-            
             Destroy(gameObject);
         }
     }
@@ -69,7 +68,7 @@ public class EntityBase : MonoBehaviour
             {
             collision.gameObject.GetComponent<enemy>().health -= damage;
             Debug.Log("attach");
-            Player.Instance.stepturns++;
+                Player.Instance.stepturns++;
             Destroy(gameObject);
             }
         }

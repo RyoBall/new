@@ -8,10 +8,15 @@ public class electricbaton : WeaponBase
     {
         base.pressed("electricbaton");
     }
-    public new void function() //到相应步骤要执行的函数
+    public void function() //到相应步骤要执行的函数
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
+            if (!start) 
+            {
+                Player.Instance.baton = true;
+                start = true;
+            }
             if (!attacked)
             {
                 GetComponent<AudioSource>().Play();
@@ -40,6 +45,7 @@ public class electricbaton : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        attacked = true;
         attack = 2;
         range = 1;
         step = 1;   

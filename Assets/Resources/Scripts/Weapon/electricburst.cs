@@ -5,7 +5,7 @@ using UnityEngine;
 public class electricburst : WeaponBase
 {
     public int enemycheced;
-    public override void function()
+    public void function()
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
@@ -42,8 +42,10 @@ public class electricburst : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        attacked = true;
         attack = 6;
         range = 2;
+        step = 4;
     }
 
     // Update is called once per frame

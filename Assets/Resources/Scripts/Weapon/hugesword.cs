@@ -5,8 +5,13 @@ using UnityEngine;
 public class hugesword : WeaponBase
 {
     public int enemycheced;//¹¥»÷·¶Î§ÄÚµÄµÐÈË
-    public override void function()
+    public void function()
     {
+        if (!start) 
+        {
+            Player.Instance.hugesword = true;
+            start = true;
+        }
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
             if (!attacked) 
@@ -27,10 +32,6 @@ public class hugesword : WeaponBase
             }
                 attacked = true;
             }
-            if (attackedenemy == enemycheced)
-            {
-                Player.Instance.stepturns++;
-            }
         }
     }
 
@@ -44,6 +45,7 @@ public class hugesword : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        attacked = true;
         attack = 5;
         range = 3;
         step = 3;

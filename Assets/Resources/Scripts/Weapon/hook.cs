@@ -9,14 +9,15 @@ public class hook : WeaponBase
         base.pressed("hook");
     }
 
-    public override void shootfunction(GameObject Entity)
+    public override void shootfunction(GameObject Entity,bool players)
     {
-        base.shootfunction(Entity);
+        base.shootfunction(Entity,players);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        shooted = true;
         step = 1;
         range = 5;
         attack = 1;
@@ -25,6 +26,6 @@ public class hook : WeaponBase
     // Update is called once per frame
     void Update()
     {
-       shootfunction(Entity);
+       shootfunction(Entity, Player.Instance.hook);
     }
 }

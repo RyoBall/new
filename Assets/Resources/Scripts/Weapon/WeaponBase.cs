@@ -14,19 +14,12 @@ public class WeaponBase : MonoBehaviour
     public int attackedenemy;
     public bool attacked;
     public bool mingzhong;
+    public bool start;
+    public bool finish;
     public GameObject Entity;
-    // Start is called before the first frame update
-    void Start()
+    
+    public virtual void function(bool players) //到相应步骤要执行的函数
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        function();
-    }
-    public virtual void function() //到相应步骤要执行的函数
-    {  
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
             if (!attacked) 
@@ -47,20 +40,29 @@ public class WeaponBase : MonoBehaviour
                     }
                 }
                     attacked = true;
+                if (!mingzhong) 
+                {
+                    Player.Instance.stepturns++; 
+                }
             }
-            if (attackedenemy > 0||!mingzhong) 
-            {
-                Player.Instance.stepturns++;
-            }
+                if (attackedenemy > 0) 
+                {
+                    Player.Instance.stepturns++; 
+                }
         }
     }
-    public virtual void shootfunction(GameObject Entity) 
+    public virtual void shootfunction(GameObject Entity,bool players) 
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns&&!shooted)
         {
+        if (!start) 
+        {
+            players = true;
+            start = true;
+        }
             GameObject Instan;
             GetComponent<AudioSource>().Play();
-            Instan=Instantiate(Entity, Player.Instance.transform.position, Player.Instance.transform.rotation);
+            Instan=Instantiate(Entity, Player.Instance.shootposition.position, Player.Instance.shootposition.rotation);
             Instan.GetComponent<EntityBase>().damage = attack;
             shooted = true;
         }

@@ -17,6 +17,7 @@ public class stepButton : MonoBehaviour
     public bool bestepped;//表明是否被多步行动占用
     public bool stepenough;
     public List<Transform> transforms;
+    public GameObject thisstep;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +89,12 @@ public class stepButton : MonoBehaviour
         //选定一个选项清理剩余的选项
         if (laststepname != stepname) 
         {
+            if (stepname != null) 
+            {
+                thisstep=transform.Find(stepname+"(Clone)").gameObject;
+            }
+            else
+            thisstep=null;
             if(laststepname!="left"&&laststepname!="right") //辨别上一步是否是左右移动（因为左右没有weaponbase脚本附着，会报错）
             {
             if(Resources.Load("prefab/" + laststepname) != null) 
@@ -149,7 +156,7 @@ public class stepButton : MonoBehaviour
             {
                 if (havestep) 
                 {
-                    for (int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++)
+                    /*for (int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++)
                     {
                         Transform transformnow;//存储当前的变换 
                         transformnow = transform.Find(Player.Instance.actions[i] + "(Clone)");
@@ -161,10 +168,11 @@ public class stepButton : MonoBehaviour
                                 {
                                     GameObject.Find("step" + j).GetComponent<stepButton>().bestepped = false;
                                 }
-                            };*/
+                            };//
                             Destroy(transformnow.gameObject);
                         }
-                    }
+                    }*/
+                    Destroy(thisstep);
                 }
                 for(int i=0;i<transforms.Count&&i<Player.Instance.actions.Count;i++)
                 Instantiate(Resources.Load<GameObject>("prefab/" + Player.Instance.actions[i]), transforms[i].position, transforms[i].rotation,this.transform);

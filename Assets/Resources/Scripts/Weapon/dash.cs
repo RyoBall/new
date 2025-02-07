@@ -10,7 +10,7 @@ public class dash : WeaponBase
     public int times = 0;
     public int lasttimes = -1;
     public bool setdashstart;
-    public override void function()
+    public void function()
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
