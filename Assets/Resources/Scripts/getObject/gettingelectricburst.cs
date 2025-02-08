@@ -40,7 +40,7 @@ public class gettingelectricburst : MonoBehaviour, IPointerEnterHandler, IPointe
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "electricburst";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "electricburst";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

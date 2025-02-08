@@ -10,7 +10,7 @@ public class diceaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + Player.Instance.actions[actionstep]+"-export");   
+        GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + Player.Instance.actions[actionstep-1]+"-export");   
     }
 
     // Update is called once per frame
@@ -26,6 +26,7 @@ public class diceaction : MonoBehaviour
         levelmanager.dicingstep = actionstep;
         levelmanager.dicingchoose=false;
         levelmanager.dicing=true;
-       GameObject.Find("mask").GetComponent<getObjectController>().choiceGenerate = false;
+        getObjectController.dicegenerate=false;
+        GameObject.Find("mask").GetComponent<getObjectController>().choiceGenerate = false;
     }
 }

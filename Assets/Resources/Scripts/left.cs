@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class left : MonoBehaviour
 {
+    public bool set;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +20,17 @@ public class left : MonoBehaviour
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
-            Player.Instance.turnvector = 1;
+            if (!set) 
+            {
+            Player.Instance.move = true;
+            set = true;
+            }
+            Player.Instance.turnvector = -1;
             Player.Instance.targetposition = Player.Instance.currentposition - 1;
             if (GameObject.Find("platform" + Player.Instance.targetposition) == null || GameObject.Find("platform" + Player.Instance.targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere) 
             {
                 Player.Instance.targetposition = Player.Instance.currentposition;
             }
-            Player.Instance.move = true;
         }
     }
     public void pressed() //按下时要执行的函数

@@ -40,7 +40,7 @@ public class gettinghugesword : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "hugesword";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "hugesword";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

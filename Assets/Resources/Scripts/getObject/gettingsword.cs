@@ -40,7 +40,7 @@ public class gettingsword : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "sword";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "sword";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

@@ -10,6 +10,11 @@ public class boss : enemy
     public bool healththisturn;
     public bool interfereing;
     public int lastturn;
+    public bool defend;
+    public bool interfere;
+    public bool restore;
+    public bool portal;
+    public bool act;
     public override void Move(int step, int dir)
     {
         base.Move(step, dir);
@@ -37,42 +42,42 @@ public class boss : enemy
 
     public override void Update()
     {
-        if (lastturn != Player.Instance.turn)
+        animator.SetBool("havedefend", havedefense);
+        animator.SetBool("interfere", interfere);
+        animator.SetBool("portal", portal);
+        animator.SetBool("restore", restore);
+        animator.SetBool("defend", defend);
+        if (lastturn != Player.Instance.turn) 
         {
+            notfinished = true;
+            act = false;
             lastturn = Player.Instance.turn;
-            currentmode= (mode)Random.Range(0, 4);
+        }
+        if (Player.Instance.stepturns==5&&!act)
+        {
+            if (!havedefense)
+                currentmode = (mode)Random.Range(0, 4);
+            else
+                currentmode = (mode)Random.Range(1, 4);
+            act = true;
             switch (currentmode) 
             {
                 case mode.defend:
+                    defend = true;
                     havedefense = true;
                     interfereing = false;
                     break;
                 case mode.portal:
-                    int targetpositoin;
-                    while (true)
-                    {
-                        targetpositoin = Random.Range(1, GameObject.Find("levelmanager").GetComponent<levelmanager>().maprange + 1);
-                        if (GameObject.Find("platform" + targetpositoin).GetComponentInChildren<platformsEnemyChec>().EnemyHere || GameObject.Find("platform" + targetpositoin).GetComponentInChildren<platformsEnemyChec>().PlayerHere)
-                        {
-                            ;
-                        }
-                        else
-                            break;
-                    }
-                    currentposition = targetpositoin;
-                    transform.position = new Vector3(GameObject.Find("platform" + targetpositoin).transform.position.x, transform.position.y, transform.position.z);
+                    portal = true;
                     interfereing = false;
                     break;
                 case mode.restore:
-                    health += 6;
-                    if (health > healthmax) 
-                    {
-                        health= healthmax;
-                    }
+                    restore = true;
                     interfereing = false;
                     break;
                 case mode.interfere:
-                    interfereing = false;
+                    interfereing = true;
+                    interfere = true;
                     break;
             }
         }
@@ -93,8 +98,41 @@ public class boss : enemy
     new void Start()
     {
             health = 40;
-            healthmax = 40; lasthealth = health;
+            healthmax = 40; 
+            lasthealth = health;
+        notfinished = true;
     }
-
+    public void portalstart() 
+    {
+        int targetpositoin;
+        while (true)
+        {
+            targetpositoin = Random.Range(1, GameObject.Find("levelmanager").GetComponent<levelmanager>().maprange + 1);
+            if (GameObject.Find("platform" + targetpositoin).GetComponentInChildren<platformsEnemyChec>().EnemyHere || GameObject.Find("platform" + targetpositoin).GetComponentInChildren<platformsEnemyChec>().PlayerHere)
+            {
+                ;
+            }
+            else
+                break;
+        }
+        currentposition = targetpositoin;
+        transform.position = new Vector3(GameObject.Find("platform" + targetpositoin).transform.position.x, transform.position.y, transform.position.z);
+    }
+    public void restorestart() 
+    {
+            health += 6;
+       if (health > healthmax) 
+            {
+            health= healthmax;
+            }
+    }
+    public void finish() 
+    {
+        restore = false;
+        portal = false;
+        interfere = false;
+        defend = false;
+        notfinished= false;
+    }
    
 }

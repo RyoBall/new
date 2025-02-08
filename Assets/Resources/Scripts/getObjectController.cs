@@ -15,7 +15,8 @@ public class getObjectController : MonoBehaviour
     public int winGenerate;
     public bool choosegenerate;
     public bool nogenerate;
-
+    public static bool dicegenerate;
+    public bool dicebuttonClear;
     [SerializeField] heimucontroller heimucontroller;
     [SerializeField] GameObject uiSelectPanel;
     [SerializeField] GameObject uiChooseCard;
@@ -23,6 +24,7 @@ public class getObjectController : MonoBehaviour
     void Start()
     {
         dicechoiceGenerate = true;
+        dicebuttonClear = true;
         uiChooseCard.SetActive(false);
     }
     // Update is called once per frame
@@ -44,19 +46,73 @@ public class getObjectController : MonoBehaviour
             uiSelectPanel.SetActive(false);
             if (!GameObject.Find("levelmanager").GetComponent<levelmanager>().win&& !GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
             { 
-
-        if (heimucontroller.loaded && !dicechoiceGenerate) 
-        {
-            for(int i = 1; i <= 2; i++) 
+            if (heimucontroller.loaded && !dicechoiceGenerate) 
             {
-               Instantiate(Resources.Load<GameObject>("prefab/dicing/action"+i ), transforms[i].position, transforms[i].rotation, transforms[i]);
-            }
-            dicechoiceGenerate = true;
-        }
-        if (heimucontroller.loaded&&!choiceGenerate) 
-        {
                 uiChooseCard.SetActive(true);
+                Instantiate(Resources.Load<GameObject>("prefab/dicing/action"+1 ), transforms[0].position, transforms[0].rotation, transforms[0]);
+                Instantiate(Resources.Load<GameObject>("prefab/dicing/action"+2 ), transforms[2].position, transforms[2].rotation, transforms[2]);
+                dicechoiceGenerate = true;
+            }
+            if (levelmanager.dicing&&!dicegenerate)
+               {
+                    dicegenerate=true;
+                    uiChooseCard.SetActive(true);
                     nogenerate = true;
+                    for (int i = 0; i < transforms.Count && i < Player.Instance.Weaponbackpack.Count - 2; i++)
+                    {
+                        Debug.Log("Generate");
+                        int m;
+                        while (true)
+                        {
+                            m = Random.Range(0, Player.Instance.Weaponbackpack.Count);
+                            if (!randnum.Contains(m) && !Player.Instance.actions.Contains(Player.Instance.Weaponbackpack[m]))
+                            {
+                                break;
+                            }
+                        }
+                        randnum.Add(m);
+                        Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.Weaponbackpack[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
+                    }
+                    for (int j = 0; j < 3; j++)
+                    {
+                        for (int i = 0; i < Player.Instance.allobject.Count; i++)
+                        {
+                            if (transforms[j].Find("getting" + Player.Instance.allobject[i] + "(Clone)") != null)
+                            {
+                                nogenerate = false;
+                            }
+                        }
+                    }
+                    if (nogenerate)
+                    {
+                        Debug.Log("nogenerate");
+                        Player.Instance.stepturns = 0;
+                    }
+                    randnum.Clear();
+                    dicebuttonClear = false;
+                }
+                if (!levelmanager.dicing && dicebuttonClear == false)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            for (int i = 0; i < Player.Wholebackpack.Count; i++)
+                            {
+                                if (transforms[j].Find("getting" + Player.Wholebackpack[i] + "(Clone)") != null)
+                                {
+                                    Destroy(transforms[j].Find("getting" + Player.Wholebackpack[i] + "(Clone)").gameObject);
+                                    Debug.Log("destroy");
+                                }
+                            }
+                        }
+                        dicebuttonClear = true;
+                        Debug.Log(111);
+                        uiChooseCard.SetActive(false);
+                    }
+            //以上为骰子用代码
+            if ((heimucontroller.loaded&&!choiceGenerate)) 
+            {
+                uiChooseCard.SetActive(true);
+                 nogenerate = true;
                 if (Player.Instance.actions.Count == 3) 
                 {
                 for (int i = 0; i < transforms.Count&&i<Player.Instance.backpack.Count-1; i++) 
@@ -114,9 +170,9 @@ public class getObjectController : MonoBehaviour
             Debug.Log("Generate");
             buttonClear = false;
             choiceGenerate = true;
-        }
+            }
 
-                if (Player.Instance.stepturns != -1 && buttonClear == false)
+                if (Player.Instance.stepturns == 0 && buttonClear == false)
                 {
                     for (int j = 0; j < 3; j++) 
                     {
@@ -135,9 +191,9 @@ public class getObjectController : MonoBehaviour
         }
         else if(GameObject.Find("levelmanager").GetComponent<levelmanager>().win)
         {
-                        uiChooseCard.SetActive(true);
             if (winGenerate==0&& heimucontroller.loaded) 
             {
+                uiChooseCard.SetActive(true);
                 for (int i = 0; i < transforms.Count && i <Player.Instance.Weaponobject.Count-Player.Weaponbag.Count+3; i++)
                 {
                     int m=-1;
@@ -176,11 +232,7 @@ public class getObjectController : MonoBehaviour
                 winGenerate = 3;
             }
         }
-        else if (GameObject.Find("levelmanager").GetComponent<levelmanager>().lose) 
-        {
-            Debug.Log("try again");
-            SceneManager.LoadScene("level" + GameObject.Find("levelmanager").GetComponent<levelmanager>().currentlevel);
-        }
+        
         }
     }
 }

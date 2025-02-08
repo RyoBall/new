@@ -26,6 +26,12 @@ public class hook : WeaponBase
     // Update is called once per frame
     void Update()
     {
-       shootfunction(Entity, Player.Instance.hook);
+        if (!start && Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
+        {
+            start = true;
+            Player.Instance.hook = true;
+            Debug.Log("startsucceed");
+        }
+        shootfunction(Entity, Player.Instance.hook);
     }
 }

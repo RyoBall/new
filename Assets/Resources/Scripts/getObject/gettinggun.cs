@@ -41,7 +41,7 @@ public class gettinggun : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "gun";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "gun";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

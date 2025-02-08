@@ -40,7 +40,7 @@ public class gettingknife : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "knife";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "knife";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

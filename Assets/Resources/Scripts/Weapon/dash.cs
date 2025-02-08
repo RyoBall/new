@@ -14,7 +14,12 @@ public class dash : WeaponBase
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
-            Player.Instance.dash = true;
+            if (!start && Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
+            {
+                start = true;
+                Player.Instance.dash = true;
+                Debug.Log("startsucceed");
+            }
             if (!attacked) 
             {
             if (!setdashstart) 

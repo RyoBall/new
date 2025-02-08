@@ -40,7 +40,7 @@ public class gettinghook : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "hook";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "hook";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

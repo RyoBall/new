@@ -33,6 +33,8 @@ public class levelmanager : MonoBehaviour
             Player.Weaponbag.Add("sword");
             Player.Wholebackpack.Add("bow");
             Player.Weaponbag.Add("bow");
+            Player.Wholebackpack.Add("dice");
+            Player.Objectbag.Add("dice");
             notfirstplay = true;
         }
     }
@@ -40,10 +42,14 @@ public class levelmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Player.Instance.health <= 0) 
+        {
+            lose = true;
+        }
         if (stepnext) 
         {
             loadtime += Time.deltaTime;
-            if (loadtime > 0.5f) 
+            if (loadtime > 0.2f) 
             {
                 loadtime = 0;
                 Player.Instance.stepturns++;
@@ -78,10 +84,6 @@ public class levelmanager : MonoBehaviour
         }
         else 
         {
-        if (Player.Instance.health <= 0) 
-        {
-            lose = true;
-        }
         for(int i = 0; i < enemys.Count; i++) 
         {
             if(enemys[i].GetComponent<enemy>().dead != true) 

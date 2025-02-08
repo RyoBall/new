@@ -40,7 +40,7 @@ public class gettingdash : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "dash";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "dash";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

@@ -51,6 +51,12 @@ public class electricburst : WeaponBase
     // Update is called once per frame
     void Update()
     {
+        if (!start && Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
+        {
+            start = true;
+            Player.Instance.burst = true;
+            Debug.Log("startsucceed");
+        }
         function();
     }
 }

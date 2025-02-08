@@ -6,6 +6,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class sword : WeaponBase
 {
     public int enemycheced;
+    
     public override void function(bool players)
     {
             if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
@@ -22,7 +23,6 @@ public class sword : WeaponBase
                         }//¹¥»÷Ô½½ç
                         if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
                         {
-                        GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren < platformsEnemyChec >().swordattackhere=true;
                             GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().Damage = attack;
                             GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().PlayerAttackHere = true;
                             enemycheced++;

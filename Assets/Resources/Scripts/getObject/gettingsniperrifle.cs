@@ -40,7 +40,7 @@ public class gettingsniperrifle : MonoBehaviour, IPointerEnterHandler, IPointerE
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "sniperrifle";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "sniperrifle";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

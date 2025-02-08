@@ -32,17 +32,7 @@ public class stepButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (inpressed&&Input.GetMouseButtonDown(0)) 
-        {
-            pressed=false;
-            transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false);
-            Grparrow.SetActive(false);
-            Grpweapon.SetActive(false);
-            for (int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++)
-                Destroy(transform.Find(Player.Instance.actions[i] + "(Clone)").gameObject);
-            havestep = false;
-            stepname = null;
-        }*/
+        
         if (bestepped) 
         {
             transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.red;
@@ -51,7 +41,6 @@ public class stepButton : MonoBehaviour
         {
             transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.white;
         }
-        
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
             Debug.Log("skip"+stepturns);
@@ -96,12 +85,21 @@ public class stepButton : MonoBehaviour
         //选定一个选项清理剩余的选项
         if (laststepname != stepname) 
         {
+            if (Player.Instance.Objectbackpack.Contains(laststepname)) 
+            {
+                Player.Instance.Objectbackpack.Remove(laststepname);
+            }
             if (stepname != null) 
             {
                 thisstep=transform.Find(stepname+"(Clone)").gameObject;
+                GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
+                GetComponentInChildren<iconbase>(true).GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + stepname + "-export");
             }
-            else
-            thisstep=null;
+            else 
+            {
+                thisstep=null;
+                GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+            }
             if(laststepname!="left"&&laststepname!="right") //辨别上一步是否是左右移动（因为左右没有weaponbase脚本附着，会报错）
             {
             if(Resources.Load("prefab/" + laststepname) != null) 

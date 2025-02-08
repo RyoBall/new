@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+    public bool set;
     public bool used;
     public bool shooted;
     public bool choosing;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     public bool notspringed;
     public int turnvector;
     public int laststepturn;
+    public bool dead;
     public List<GameObject> steps = new List<GameObject>();
     public Transform shootposition; 
     [Header("animevent")]
@@ -88,11 +90,18 @@ public class Player : MonoBehaviour
         anim.SetBool("hookattached", hookattached);
         anim.SetBool("hooknotattached", hooknotattached);
         anim.SetBool("hookfinish", hookfinish);
+        anim.SetBool("dead", dead);
         if (laststepturn != stepturns) 
         {
             attackedthisstep = false;
             laststepturn = stepturns;
         }
+
+        if (health <= 0) 
+        {
+            dead = true;
+        }
+
         if (facingdir == 1)
         {
             GetComponent<SpriteRenderer>().flipX = false;
@@ -101,15 +110,17 @@ public class Player : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
+
         Objectbackpack = Objectbag;
         if (actions.Count >= 4)
         {
-            backpack=Objectbackpack;
+            backpack = Objectbackpack;
         }
         else 
         {
             backpack = Weaponbackpack;
         }
+
         if (stepturns == -1)//-1���Ĵ��� 
         {
             for (int i = 0; i < 4; i++)
@@ -192,6 +203,10 @@ public class Player : MonoBehaviour
     public void springfinish() 
     {
         move=false;
-        stepturns++;
+        levelmanager.stepgo();
+    }
+    public void havedead() 
+    {
+        SceneManager.LoadScene("level" + GameObject.Find("levelmanager").GetComponent<levelmanager>().currentlevel);
     }
 }

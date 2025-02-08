@@ -40,7 +40,7 @@ public class gettingbow : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         }
         else 
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "bow";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "bow";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }

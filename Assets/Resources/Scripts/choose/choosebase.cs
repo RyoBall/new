@@ -31,7 +31,6 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         onmousetime += Time.deltaTime;
         if (onmousetime > 0.5f)
         {
-            GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
             GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
         }
 
@@ -72,7 +71,6 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         onmouse = false;
         onmousetime = 0;
-        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
         GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
 }

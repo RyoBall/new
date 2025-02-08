@@ -40,7 +40,7 @@ public class gettingelectricbaton : MonoBehaviour, IPointerEnterHandler, IPointe
         }
         else
         {
-            Player.Instance.actions[levelmanager.dicingstep] = "electricbaton";
+            Player.Instance.actions[levelmanager.dicingstep-1] = "electricbaton";
             levelmanager.dicing = false;
             levelmanager.stepgo();
         }
