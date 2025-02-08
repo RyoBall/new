@@ -30,6 +30,9 @@ public class right : MonoBehaviour
         GetComponentInParent<stepButton>().pressed = false;
         GetComponentInParent<stepButton>().stepname = "right";
         GetComponentInParent<stepButton>().choiceclear = false;
+        GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+        GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
+        GetComponentInParent<stepButton>().transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false); ;
         if (GetComponentInParent<stepButton>().stepturns != 4) 
         {
             for(int i= GetComponentInParent<stepButton>().stepturns; i <= 3; i++) 

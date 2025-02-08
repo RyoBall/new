@@ -151,24 +151,9 @@ public class stepButton : MonoBehaviour
             {
                 if (havestep) 
                 {
-                    /*for (int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++)
-                    {
-                        Transform transformnow;//存储当前的变换 
-                        transformnow = transform.Find(Player.Instance.actions[i] + "(Clone)");
-                        if (transformnow != null) 
-                        {
-                            /*if (transformnow.gameObject.GetComponent<WeaponBase>().step > 1) 
-                            {
-                                for (int j = 1; j < transformnow.gameObject.GetComponent<WeaponBase>().step; j++) 
-                                {
-                                    GameObject.Find("step" + j).GetComponent<stepButton>().bestepped = false;
-                                }
-                            };//
-                            Destroy(transformnow.gameObject);
-                        }
-                    }*/
                     Destroy(thisstep);
                 }
+                transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", true);
                 Grparrow.SetActive(true);
                 Grpweapon.SetActive(true);
                 for(int i=0;i<transforms.Count&&i<Player.Instance.actions.Count;i++)
@@ -176,6 +161,7 @@ public class stepButton : MonoBehaviour
             }
             if (!pressed) 
             {
+                transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false);
                 Grparrow.SetActive(false);
                 Grpweapon.SetActive(false);
                 for (int i=0;i<transforms.Count&&i < Player.Instance.actions.Count; i++)
