@@ -43,7 +43,7 @@ public class levelmanager : MonoBehaviour
         if (stepnext) 
         {
             loadtime += Time.deltaTime;
-            if (loadtime > 0.2f) 
+            if (loadtime > 0.5f) 
             {
                 loadtime = 0;
                 Player.Instance.stepturns++;

@@ -21,6 +21,10 @@ public class right : MonoBehaviour
         {
             Player.Instance.turnvector = 1;
             Player.Instance.targetposition = Player.Instance.currentposition + 1;
+            if (GameObject.Find("platform" + Player.Instance.targetposition) == null || GameObject.Find("platform" + Player.Instance.targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
+            {
+                Player.Instance.targetposition = Player.Instance.currentposition;
+            }
             Player.Instance.move = true;
         }
     }

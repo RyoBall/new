@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     public int targetposition;
     public bool notspringed;
     public int turnvector;
+    public int laststepturn;
     public List<GameObject> steps = new List<GameObject>();
     public Transform shootposition; 
     [Header("animevent")]
@@ -51,6 +52,9 @@ public class Player : MonoBehaviour
     public bool move;
     public bool hookattached;
     public bool hooknotattached;
+    public bool hookfinish;
+    public bool dashend;
+    public bool attackedthisstep;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -75,13 +79,20 @@ public class Player : MonoBehaviour
         anim.SetBool("sword", sword);
         anim.SetBool("hugesword", hugesword);
         anim.SetBool("dash", dash);
+        anim.SetBool("dashend", dashend);
         anim.SetBool("baton", baton);
         anim.SetBool("burst", burst);
         anim.SetBool("sniper", sniper);
         anim.SetBool("hook", hook);
         anim.SetBool("move", move);
-        anim.SetBool("attached", hookattached);
-        anim.SetBool("notattached", hooknotattached);
+        anim.SetBool("hookattached", hookattached);
+        anim.SetBool("hooknotattached", hooknotattached);
+        anim.SetBool("hookfinish", hookfinish);
+        if (laststepturn != stepturns) 
+        {
+            attackedthisstep = false;
+            laststepturn = stepturns;
+        }
         if (facingdir == 1)
         {
             GetComponent<SpriteRenderer>().flipX = false;
@@ -153,8 +164,13 @@ public class Player : MonoBehaviour
     }
     public void attack() 
     {
+        if (!attackedthisstep) 
+        {
+        Debug.Log("attacked");
         GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().attacked=false;
         GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().shooted=false;
+        attackedthisstep = true;
+        }
     }
     public void finish() 
     {
@@ -167,6 +183,11 @@ public class Player : MonoBehaviour
         hugesword=false;
         sword=false;
         dash = false;
+        hook = false;
+        hookattached = false;
+        hooknotattached = false;
+        hookfinish = false;
+        dashend = false;
     }
     public void springfinish() 
     {

@@ -14,6 +14,9 @@ public class dash : WeaponBase
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
+            Player.Instance.dash = true;
+            if (!attacked) 
+            {
             if (!setdashstart) 
             {
                 Player.Instance.dashed = false;
@@ -72,7 +75,9 @@ public class dash : WeaponBase
             {
                 Player.Instance.rb.velocity = Vector2.zero;
                     Debug.Log("end");
+                    Player.Instance.dashend = true;
                     Player.Instance.stepturns++;
+            }
             }
         }
     }

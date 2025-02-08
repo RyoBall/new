@@ -43,7 +43,6 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     public virtual void pressed(string name) 
     {
-        Debug.Log(Player.Instance.Weaponbackpack.Count);   
         if (!chosen) 
         {
             if (Player.Instance.Weaponbackpack.Count <= 4) 
@@ -61,6 +60,7 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, 0.5f);
             Player.Instance.Weaponbackpack.Remove(name);
         }
+        Debug.Log(Player.Instance.Weaponbackpack.Count);   
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)

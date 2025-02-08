@@ -19,20 +19,13 @@ public class left : MonoBehaviour
     {
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
         {
-            Player.Instance.facingdir = -1;
-            int targetposition=Player.Instance.currentposition-1;
-            if (GameObject.Find("platform" + targetposition) == null || GameObject.Find("platform" + targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere) 
+            Player.Instance.turnvector = 1;
+            Player.Instance.targetposition = Player.Instance.currentposition - 1;
+            if (GameObject.Find("platform" + Player.Instance.targetposition) == null || GameObject.Find("platform" + Player.Instance.targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere) 
             {
-                levelmanager.stepgo();
+                Player.Instance.targetposition = Player.Instance.currentposition;
             }
-            else 
-            {
-                Player.Instance.transform.position = new Vector2(GameObject.Find("platform" + targetposition).transform.position.x, Player.Instance.transform.position.y);
-                    Player.Instance.currentposition--;
-                    Player.Instance.stepturns++;
-                    
-                
-            }
+            Player.Instance.move = true;
         }
     }
     public void pressed() //按下时要执行的函数

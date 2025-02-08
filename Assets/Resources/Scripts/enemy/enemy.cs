@@ -125,7 +125,8 @@ public class enemy : MonoBehaviour
                     ismoving = false;
                     dir = 0;
                     step = 0;
-                    Player.Instance.stepturns++;
+                    Player.Instance.hookfinish=true;
+                    levelmanager.stepgo();
                 }
             }
         }

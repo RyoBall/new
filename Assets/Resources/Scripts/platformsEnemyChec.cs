@@ -34,10 +34,7 @@ public class platformsEnemyChec : MonoBehaviour
                     other.GetComponent<enemy>().electricted=true;
                     other.GetComponent<enemy>().laststepturns=Player.Instance.stepturns;
                 }
-                if (swordattackhere) 
-                {
-                    other.GetComponentInChildren<attackedeffect>().swordeffect=true;
-                }
+                
                 haselectric = false;
                 PlayerAttackHere = false;
                 GameObject.Find("step" + Player.Instance.stepturns).transform.Find(GameObject.Find("step" + Player.Instance.stepturns).GetComponent<stepButton>().stepname+"(Clone)").gameObject.GetComponent<WeaponBase>().attackedenemy++;

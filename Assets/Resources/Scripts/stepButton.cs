@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class stepButton : MonoBehaviour
 {
     public bool pressed;//代表是否被摁下
+    public bool pressedcancel;//按钮取消
     public int stepturns;//代表这个脚本附属的物件是第几步
     public bool havestep;//代表这一步骤是否被填充
     public bool choiceclear;//用于判别选择选项后是否清除好了剩余选项
@@ -31,6 +32,17 @@ public class stepButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if (inpressed&&Input.GetMouseButtonDown(0)) 
+        {
+            pressed=false;
+            transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false);
+            Grparrow.SetActive(false);
+            Grpweapon.SetActive(false);
+            for (int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++)
+                Destroy(transform.Find(Player.Instance.actions[i] + "(Clone)").gameObject);
+            havestep = false;
+            stepname = null;
+        }*/
         if (bestepped) 
         {
             transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.red;
@@ -42,7 +54,7 @@ public class stepButton : MonoBehaviour
         
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
-            Debug.Log("skip");
+            Debug.Log("skip"+stepturns);
             Player.Instance.stepturns++;//没有填充步骤就跳到下一步
         }
         //跳过
@@ -144,7 +156,7 @@ public class stepButton : MonoBehaviour
     }
     public void buttonpressed()
     {
-        if (!bestepped) 
+        if (!bestepped&&Player.Instance.stepturns==0) 
         {
             pressed = !pressed;
             if (pressed) 
