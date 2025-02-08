@@ -18,6 +18,9 @@ public class stepButton : MonoBehaviour
     public bool stepenough;
     public List<Transform> transforms;
     public GameObject thisstep;
+    public GameObject Grparrow;
+    public GameObject Grpweapon;
+    public Sprite norbutton;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,7 @@ public class stepButton : MonoBehaviour
         }
         else 
         {
-            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = null;
+            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/UI/Button-export");
         }
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
@@ -174,12 +177,16 @@ public class stepButton : MonoBehaviour
                     }*/
                     Destroy(thisstep);
                 }
+                Grparrow.SetActive(true);
+                Grpweapon.SetActive(true);
                 for(int i=0;i<transforms.Count&&i<Player.Instance.actions.Count;i++)
                 Instantiate(Resources.Load<GameObject>("prefab/" + Player.Instance.actions[i]), transforms[i].position, transforms[i].rotation,this.transform);
             }
             if (!pressed) 
             {
-                for(int i=0;i<transforms.Count&&i < Player.Instance.actions.Count; i++)
+                Grparrow.SetActive(false);
+                Grpweapon.SetActive(false);
+                for (int i=0;i<transforms.Count&&i < Player.Instance.actions.Count; i++)
                 Destroy(transform.Find(Player.Instance.actions[i]+"(Clone)").gameObject);
                 havestep = false;
                 stepname = null;
