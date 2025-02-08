@@ -72,35 +72,24 @@ public class spring : WeaponBase
         {
             if (Player.Instance.facingdir > 0)
             {
-                for (int i = Player.Instance.currentposition + range; i > Player.Instance.currentposition; i--)
+                if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
                 {
-                    if (GameObject.Find("platform" + i) != null&& GameObject.Find("platform" + i).GetComponentInChildren<platformsEnemyChec>().EnemyHere==false)
-                    {
-                        targetposition = i;
-                        break;
-                    }
+                    Player.Instance.turnvector = 1;
+                    Player.Instance.targetposition = Player.Instance.currentposition + 2;
+                    Player.Instance.move = true;
                 }
             }
             else
             {
                 for (int i = Player.Instance.currentposition-range; i < Player.Instance.currentposition; i++)
                 {
-                    if (GameObject.Find("platform" + i) != null && GameObject.Find("platform" + i).GetComponentInChildren<platformsEnemyChec>().EnemyHere == false)
+                    if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
                     {
-                        targetposition = i;
-                        break;
+                        Player.Instance.turnvector = -1;
+                        Player.Instance.targetposition = Player.Instance.currentposition -2;
+                        Player.Instance.move = true;
                     }
                 }
-            }
-            if (targetposition==0)
-            {
-                Debug.Log("spring no target");
-                Player.Instance.stepturns++;
-            }
-            else
-            {
-                Player.Instance.currentposition = targetposition;
-                Player.Instance.notspringed = true;
             }
         }
     }

@@ -156,6 +156,10 @@ MonoBehaviour:
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 0}
 --- !u!61 &109065370097088379
 BoxCollider2D:
@@ -263,6 +267,10 @@ MonoBehaviour:
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 2384019220234599608, guid: 8ee750d0bf974e444a1a8558df5f61c1, type: 3}
 --- !u!61 &-1656866492397983720
 BoxCollider2D:
@@ -331,7 +339,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87e56d819c6603b46884deb7ab31f3d9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 92605dfc15722f04bb66e29f839ab231, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
