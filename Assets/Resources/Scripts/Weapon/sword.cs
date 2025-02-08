@@ -18,7 +18,7 @@ public class sword : WeaponBase
                 if (!attacked)
                 {
                     GetComponent<AudioSource>().Play();
-                levelmanager.stepgo();
+                    levelmanager.stepgo();
                     for (int i = 1; i <= range; i++)
                     {
                         if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null)
@@ -27,6 +27,7 @@ public class sword : WeaponBase
                         }//¹¥»÷Ô½½ç
                         if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
                         {
+                        GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren < platformsEnemyChec >().swordattackhere=true;
                             GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().Damage = attack;
                             GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().PlayerAttackHere = true;
                             enemycheced++;

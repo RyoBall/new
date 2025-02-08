@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     public bool notspringed;
     public int turnvector;
     public List<GameObject> steps = new List<GameObject>();
-    public Transform shootposition;
+    public Transform shootposition; 
     [Header("animevent")]
     public Animator anim;
     public bool knife;
@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
         facingdir = turnvector;
         if (GameObject.Find("platform" + targetposition) != null && !GameObject.Find("platform" +targetposition).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
         {   
-            transform.position=new Vector2(GameObject.Find("platform"+targetposition).transform.position.x,transform.position.y);
+            transform.position=new Vector2(transform.position.x+(targetposition-currentposition)*1.5f,transform.position.y);
             currentposition=targetposition;
         }
     }

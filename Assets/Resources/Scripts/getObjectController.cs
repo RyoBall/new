@@ -107,6 +107,7 @@ public class getObjectController : MonoBehaviour
                     }
                     if (nogenerate) 
                     {
+                        Debug.Log("nogenerate");
                         Player.Instance.stepturns = 0;
                     }
             randnum.Clear();
