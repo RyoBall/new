@@ -25,6 +25,7 @@ public class stepButton : MonoBehaviour
     void Start()
     {
         choiceclear = true;
+        transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/UI/Button-export");
     }
 
     // Update is called once per frame
@@ -38,20 +39,11 @@ public class stepButton : MonoBehaviour
         {
             transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.white;
         }
-        if (havestep)
-        {
-            Debug.Log("havestep");
-            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/" + stepname + "-export");
-        }
-        else 
-        {
-            transform.Find("normalbutton").gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("icon/UI/Button-export");
-        }
+        
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
             Debug.Log("skip");
             Player.Instance.stepturns++;//没有填充步骤就跳到下一步
-            
         }
         //跳过
         if (Player.Instance.stepturns == -1)

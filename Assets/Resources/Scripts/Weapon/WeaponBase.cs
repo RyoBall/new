@@ -77,6 +77,8 @@ public class WeaponBase : MonoBehaviour
         GetComponentInParent<stepButton>().stepname = name;
         GetComponentInParent<stepButton>().stepenough = true;
         GetComponentInParent<stepButton>().choiceclear = false;
+        GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+        GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
         if (GetComponentInParent<stepButton>().stepname != null)
         {
             if (step > 1)

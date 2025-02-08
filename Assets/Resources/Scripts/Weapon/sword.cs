@@ -8,11 +8,6 @@ public class sword : WeaponBase
     public int enemycheced;
     public override void function(bool players)
     {
-        if (!start)
-        {
-            players = true;
-            start = true;
-        }
             if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
             {
                 if (!attacked)
