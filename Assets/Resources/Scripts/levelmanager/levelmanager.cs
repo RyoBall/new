@@ -19,6 +19,8 @@ public class levelmanager : MonoBehaviour
     public bool choosecard;
     public int maprange;//��ͼ���� 
     public bool notfinished;//�����Ƿ�������
+    public static bool stepnext;
+    public float loadtime;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,16 @@ public class levelmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stepnext) 
+        {
+            loadtime += Time.deltaTime;
+            if (loadtime > 0.2f) 
+            {
+                loadtime = 0;
+                Player.Instance.stepturns++;
+                stepnext = false;   
+            }
+        }
         if (Player.Instance.stepturns == -1) 
         {
             notfinished = true;
@@ -87,6 +99,6 @@ public class levelmanager : MonoBehaviour
     }
     public static void stepgo() 
     {
-        Player.Instance.stepturns++;
+        stepnext = true;
     }
 }

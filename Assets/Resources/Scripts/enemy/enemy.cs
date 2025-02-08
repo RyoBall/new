@@ -113,8 +113,6 @@ public class enemy : MonoBehaviour
                 Debug.Log(targetposition);
                 ismoving = false;
                 Player.Instance.stepturns++;
-                if (Player.Instance.stepturns == 5)
-                Player.Instance.stepturns = -1;
             }
             else
             {

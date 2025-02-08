@@ -29,7 +29,7 @@ public class electricburst : WeaponBase
             }
             if (attackedenemy == enemycheced)
             {
-                Player.Instance.stepturns++;
+                levelmanager.stepgo();
             }
         }
     }

@@ -19,6 +19,7 @@ public class electricbaton : WeaponBase
             }
             if (!attacked)
             {
+                levelmanager.stepgo();
                 GetComponent<AudioSource>().Play();
                 for (int i = 1; i <= range; i++)
                 {
@@ -35,10 +36,6 @@ public class electricbaton : WeaponBase
                     }
                 }
                 attacked = true;
-            }
-            if (attackedenemy > 0)
-            {
-                Player.Instance.stepturns++;
             }
         }
     }

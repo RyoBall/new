@@ -16,6 +16,7 @@ public class hugesword : WeaponBase
         {
             if (!attacked) 
             {
+                levelmanager.stepgo();
                 GetComponent<AudioSource>().Play();
                 for (int i = 1; i <= range; i++)
             {

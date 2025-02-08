@@ -18,6 +18,7 @@ public class sword : WeaponBase
                 if (!attacked)
                 {
                     GetComponent<AudioSource>().Play();
+                levelmanager.stepgo();
                     for (int i = 1; i <= range; i++)
                     {
                         if (GameObject.Find("platform" + (Player.Instance.currentposition + i * Player.Instance.facingdir)) == null)

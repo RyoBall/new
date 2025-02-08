@@ -16,6 +16,7 @@ public class WeaponBase : MonoBehaviour
     public bool mingzhong;
     public bool start;
     public bool finish;
+    public bool hook;
     public GameObject Entity;
     
     public virtual void function(bool players) //到相应步骤要执行的函数
@@ -42,12 +43,12 @@ public class WeaponBase : MonoBehaviour
                     attacked = true;
                 if (!mingzhong) 
                 {
-                    Player.Instance.stepturns++; 
+                    levelmanager.stepgo();
                 }
             }
                 if (attackedenemy > 0) 
                 {
-                    Player.Instance.stepturns++; 
+                    levelmanager.stepgo(); 
                 }
         }
     }
@@ -64,6 +65,8 @@ public class WeaponBase : MonoBehaviour
             GetComponent<AudioSource>().Play();
             Instan=Instantiate(Entity, Player.Instance.shootposition.position, Player.Instance.shootposition.rotation);
             Instan.GetComponent<EntityBase>().damage = attack;
+            if(!hook)
+            levelmanager.stepgo();
             shooted = true;
         }
     }

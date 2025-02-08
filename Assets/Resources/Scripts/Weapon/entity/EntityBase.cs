@@ -40,8 +40,6 @@ public class EntityBase : MonoBehaviour
         if (targetposition == 0) 
         {
             Debug.Log("notarget");
-            Player.Instance.stepturns++;
-            
             Destroy(gameObject);
         }
     }
@@ -49,7 +47,6 @@ public class EntityBase : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-       
         function();
     }
     public virtual void function() 
@@ -68,7 +65,6 @@ public class EntityBase : MonoBehaviour
             {
             collision.gameObject.GetComponent<enemy>().health -= damage;
             Debug.Log("attach");
-                Player.Instance.stepturns++;
             Destroy(gameObject);
             }
         }
