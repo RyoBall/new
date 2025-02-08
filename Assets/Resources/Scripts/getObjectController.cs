@@ -86,7 +86,6 @@ public class getObjectController : MonoBehaviour
                     if (nogenerate)
                     {
                         Debug.Log("nogenerate");
-                        Player.Instance.stepturns = 0;
                     }
                     randnum.Clear();
                     dicebuttonClear = false;
@@ -105,7 +104,6 @@ public class getObjectController : MonoBehaviour
                             }
                         }
                         dicebuttonClear = true;
-                        Debug.Log(111);
                         uiChooseCard.SetActive(false);
                     }
             //以上为骰子用代码

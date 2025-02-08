@@ -27,6 +27,5 @@ public class diceaction : MonoBehaviour
         levelmanager.dicingchoose=false;
         levelmanager.dicing=true;
         getObjectController.dicegenerate=false;
-        GameObject.Find("mask").GetComponent<getObjectController>().choiceGenerate = false;
     }
 }
