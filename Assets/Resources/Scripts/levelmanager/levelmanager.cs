@@ -36,10 +36,10 @@ public class levelmanager : MonoBehaviour
         {
             Player.Wholebackpack.Add("knife");
             Player.Weaponbag.Add("knife");
-            Player.Wholebackpack.Add("sniperrifle");
-            Player.Weaponbag.Add("sniperrifle");
-            Player.Wholebackpack.Add("hook");
-            Player.Weaponbag.Add("hook");
+            Player.Wholebackpack.Add("bow");
+            Player.Weaponbag.Add("bow");
+            Player.Wholebackpack.Add("sword");
+            Player.Weaponbag.Add("sword");
             Player.Wholebackpack.Add("spring");
             Player.Objectbag.Add("spring");
             notfirstplay = true;
