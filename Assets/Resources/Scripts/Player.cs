@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
     public int laststepturn;
     public bool dead;
     public List<GameObject> steps = new List<GameObject>();
-    public Transform shootposition; 
+    public Transform shootposition;
+    public int instantiated;
     [Header("animevent")]
     public Animator anim;
     public bool knife;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
     public bool hookfinish;
     public bool dashend;
     public bool attackedthisstep;
+    public bool backpackisweapon;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -91,6 +93,17 @@ public class Player : MonoBehaviour
         anim.SetBool("hooknotattached", hooknotattached);
         anim.SetBool("hookfinish", hookfinish);
         anim.SetBool("dead", dead);
+        if (backpackisweapon) 
+        {
+            instantiated = actions.Count - 2;
+        }
+        else 
+        {
+            if(Weaponbackpack.Count==1)
+                instantiated=actions.Count-3;
+            else
+                instantiated=actions.Count-4;
+        }
         if (laststepturn != stepturns) 
         {
             attackedthisstep = false;
@@ -112,13 +125,15 @@ public class Player : MonoBehaviour
         }
 
         Objectbackpack = Objectbag;
-        if (actions.Count >= 4)
+        if (actions.Count >= 4||actions.Count-2>=Weaponbackpack.Count)
         {
             backpack = Objectbackpack;
+            backpackisweapon=false;
         }
         else 
         {
             backpack = Weaponbackpack;
+            backpackisweapon=true;
         }
 
         if (stepturns == -1)//-1���Ĵ��� 
@@ -136,14 +151,19 @@ public class Player : MonoBehaviour
         }
         if (stepturns > 0) //�غϿ�ʼ��Ĵ��룬��-1��ʱ�������ȼ���
         {
-            if (actions.Count >= 5) 
+            if (!backpackisweapon) 
             {
-            if (Objectused.Contains(actions[4])) 
+                if (Objectused.Contains(actions[3])) 
+                {
+                    actions.Remove(actions[3]);
+                }
+                if (Objectused.Contains(actions[4]))
                 {
                     actions.Remove(actions[4]);
                 }
             }
         }
+   
         if (lastturn != turn) //�غ�ת���Ĵ��룬��-1��ִֻ��һ��,��һ�غϲ�ִ��
         {
             health--;

@@ -2817,6 +2817,18 @@ PrefabInstance:
       propertyPath: Weaponbackpack.Array.data[2]
       value: sword
       objectReference: {fileID: 0}
+    - target: {fileID: 3582370447363712341, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
+      propertyPath: m_Size.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582370447363712341, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582370447363712341, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4807731966010005485, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
       propertyPath: m_Name
       value: player
@@ -2835,11 +2847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6085040692906169408, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 6085040692906169408, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.09
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 6085040692906169408, guid: bdc5b088cbbad924ba56e420f49f24cc, type: 3}
       propertyPath: m_LocalPosition.z

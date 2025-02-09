@@ -303,15 +303,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2925923798118544277, guid: ef8df72d9620a0a46937d7b8db092e04, type: 3}
+  m_Sprite: {fileID: -3154320769098793493, guid: 5605434408c399149949a1ec84fb1980, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.54, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &6309498340084356074
@@ -414,6 +414,7 @@ MonoBehaviour:
   dead: 0
   steps: []
   shootposition: {fileID: 9202705600383606205}
+  instantiated: 0
   anim: {fileID: 8307649799315310821}
   knife: 0
   bow: 0
@@ -431,6 +432,7 @@ MonoBehaviour:
   hookfinish: 0
   dashend: 0
   attackedthisstep: 0
+  backpackisweapon: 0
 --- !u!95 &8307649799315310821
 Animator:
   serializedVersion: 5
@@ -596,9 +598,9 @@ BoxCollider2D:
   m_Offset: {x: 0.05964467, y: 0.42814314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.39155516, y: 0.044528555}
-    oldSize: {x: 0.55, y: 0.94}
-    newSize: {x: 0.55, y: 0.94}
+    pivot: {x: 0.43746608, y: 0.053132888}
+    oldSize: {x: 0.54, y: 0.94}
+    newSize: {x: 0.54, y: 0.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

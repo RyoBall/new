@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class stepButton : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class stepButton : MonoBehaviour
     public GameObject Grparrow;
     public GameObject Grpweapon;
     public Sprite norbutton;
+    public GameObject txt;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,11 @@ public class stepButton : MonoBehaviour
         
         if (bestepped) 
         {
-            transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.red;
+            txt.GetComponent<TMP_Text>().text = "x";
         }
         else 
         {
-            transform.Find("normalbutton").gameObject.GetComponent<Image>().color = Color.white;
+            txt.GetComponent<TMP_Text>().text = ""+stepturns;
         }
         if (stepturns == Player.Instance.stepturns && !havestep) 
         {
@@ -57,7 +59,6 @@ public class stepButton : MonoBehaviour
                     Destroy(transformnow.gameObject);
             }
             stepname = null;
-            laststepname = null;
             choiceclear = true;
             havestep = false;
             bestepped = false;
@@ -65,21 +66,20 @@ public class stepButton : MonoBehaviour
         //新回合调整
         if (!choiceclear) 
         {
-            for(int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++) 
-            {
-                if (Player.Instance.actions[i] != stepname) 
+                for(int i = 0; i < transforms.Count && i < Player.Instance.actions.Count; i++) 
                 {
-                    
+                    if (Player.Instance.actions[i] != stepname) 
+                    {
                     Transform transformnow;//存储当前的变换 
-                    transformnow=transform.Find(Player.Instance.actions[i]+"(Clone)");
+                    transformnow = transform.Find(Player.Instance.actions[i]+"(Clone)");
                     if (transformnow == null) 
                     {
-                        Debug.Log("error");
+                        ;
                     }
                     else
                     Destroy(transformnow.gameObject);
+                    }
                 }
-            }
             choiceclear = true;   
         }
         //选定一个选项清理剩余的选项
@@ -167,7 +167,7 @@ public class stepButton : MonoBehaviour
                 Grparrow.SetActive(true);
                 Grpweapon.SetActive(true);
                 for(int i=0;i<transforms.Count&&i<Player.Instance.actions.Count;i++)
-                Instantiate(Resources.Load<GameObject>("prefab/" + Player.Instance.actions[i]), transforms[i].position, transforms[i].rotation,this.transform);
+                Instantiate(Resources.Load<GameObject>("prefab/" + Player.Instance.actions[i]), transforms[i].position, transforms[i].rotation, this.transform);
             }
             if (!pressed) 
             {

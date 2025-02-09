@@ -44,14 +44,16 @@ public class choosebase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (!chosen) 
         {
-            if (Player.Instance.Weaponbackpack.Count <= 4) 
+            if (Player.Instance.Weaponbackpack.Count < 4) 
             {
                 chosen = true;
                 Player.Instance.Weaponbackpack.Add(name);
                 GetComponent<Image>().color = new Color(GetComponent<Image>().color.r, GetComponent<Image>().color.g, GetComponent<Image>().color.b, 1);
             }
-            else
-                Debug.Log("enoughweapon");
+            else 
+            {
+                
+            }
         }
         else 
         {

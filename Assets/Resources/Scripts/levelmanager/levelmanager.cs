@@ -33,8 +33,6 @@ public class levelmanager : MonoBehaviour
             Player.Weaponbag.Add("sword");
             Player.Wholebackpack.Add("bow");
             Player.Weaponbag.Add("bow");
-            Player.Wholebackpack.Add("dice");
-            Player.Objectbag.Add("dice");
             notfirstplay = true;
         }
     }

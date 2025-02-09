@@ -13,7 +13,7 @@ public class getObjectController : MonoBehaviour
     public bool choiceGenerate;
     public static bool dicechoiceGenerate;
     public int winGenerate;
-    public bool choosegenerate;
+    public bool chooosegenerate;
     public bool nogenerate;
     public static bool dicegenerate;
     public bool dicebuttonClear;
@@ -30,16 +30,16 @@ public class getObjectController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard&&!choosegenerate) 
+        if (GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard&&!chooosegenerate) 
         {
+            uiChooseCard.SetActive(false);
+            uiSelectPanel.SetActive(true);
+            chooosegenerate = true;
             for(int i = 0; i < choosetransforms.Count && i < Player.Weaponbag.Count; i++) 
             {
                 Instantiate(Resources.Load("prefab/choose/choose" + Player.Weaponbag[i]), choosetransforms[i].position, choosetransforms[i].rotation, choosetransforms[i]);
                 Debug.Log($"{Player.Weaponbag[i]}生成的位置在{choosetransforms[i].position}");
             }
-            choosegenerate = true;
-            uiChooseCard.SetActive(false);
-            uiSelectPanel.SetActive(true);
         }
         else if(!GameObject.Find("levelmanager").GetComponent<levelmanager>().choosecard)
         {
@@ -86,6 +86,7 @@ public class getObjectController : MonoBehaviour
                     if (nogenerate)
                     {
                         Debug.Log("nogenerate");
+                        Player.Instance.stepturns = 0;
                     }
                     randnum.Clear();
                     dicebuttonClear = false;
@@ -111,7 +112,7 @@ public class getObjectController : MonoBehaviour
             {
                 uiChooseCard.SetActive(true);
                  nogenerate = true;
-                if (Player.Instance.actions.Count == 3) 
+                /*if (Player.Instance.actions.Count == 3&&Player.Instance.backpackisweapon) 
                 {
                 for (int i = 0; i < transforms.Count&&i<Player.Instance.backpack.Count-1; i++) 
                 {
@@ -127,14 +128,14 @@ public class getObjectController : MonoBehaviour
                 randnum.Add(m);
                 Instantiate(Resources.Load<GameObject>("prefab/getting" + Player.Instance.backpack[m]), transforms[i].position, transforms[i].rotation, transforms[i]);
                 }
-                }
-                else if (Player.Instance.actions.Count==5) 
+                }*/
+                if (Player.Instance.actions.Count==5||(Player.Instance.Weaponbackpack.Count==1&&Player.Instance.actions.Count==4)) 
                 {
                     Player.Instance.stepturns=0;           
                 }
                 else 
                 {
-                    for (int i = 0; i < transforms.Count && i < Player.Instance.backpack.Count; i++)
+                    for (int i = 0; i < transforms.Count && i < Player.Instance.backpack.Count-Player.Instance.instantiated; i++)
                     {
                         int m;
                         while (true)

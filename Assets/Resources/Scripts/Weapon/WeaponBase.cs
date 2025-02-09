@@ -100,7 +100,6 @@ public class WeaponBase : MonoBehaviour
             }
         }
         //确定步骤是否足够
-        
             if (GetComponentInParent<stepButton>().stepenough && step > 1)
             {
                 for (int i = 1; i < step; i++)

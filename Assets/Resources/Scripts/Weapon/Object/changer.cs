@@ -19,6 +19,7 @@ public class changer : WeaponBase
         else
         {
             base.pressed("changer");
+            if(GetComponentInParent<stepButton>().stepname != null)
             Player.Instance.Objectused.Add("changer");
         }
     }

@@ -24,7 +24,7 @@ public class choosedeffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             ;
         }
         else
-        transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.25f);
+        transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.2f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -33,6 +33,6 @@ public class choosedeffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             ;
         }
-        transform.DOScale(new Vector3(1, 1, 1), 0.25f);
+        transform.DOScale(new Vector3(1, 1, 1), 0.2f);
     }
 }
