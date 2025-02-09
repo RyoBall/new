@@ -32,6 +32,7 @@ public class charger : WeaponBase
         if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns && !used)
         {
             Player.Instance.health++;
+            Player.Instance.stepturns++;
             used = true;
         }
     }

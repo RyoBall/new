@@ -38,11 +38,11 @@ public class enemy : MonoBehaviour
             Vector3 trans=transform.position;
             int position = currentposition;//¥Ê¥¢µ±«∞Œª÷√
             currentposition=Player.Instance.currentposition;
-            transform.position = Player.Instance.transform.position;
+            transform.position = new Vector2(Player.Instance.transform.position.x,transform.position.y);
             Player.Instance.currentposition = position;
-            Player.Instance.transform.position = trans;
+            Player.Instance.transform.position = new Vector2(trans.x,Player.Instance.transform.position.y);
             Player.Instance.stepturns++;
-            
+            levelmanager.changerchoosing = false;
         }
     }
     public void Start()
@@ -97,7 +97,7 @@ public class enemy : MonoBehaviour
             if (laststepturns != Player.Instance.stepturns) 
             {
                 laststepturns= Player.Instance.stepturns;
-                health -= 2;
+                health -= 3;
             }   
         }
         animator.SetBool("attacked", attacked);

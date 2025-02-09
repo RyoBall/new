@@ -112,6 +112,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0) 
         {
+            if(GameObject.Find("levelmanager").GetComponent<levelmanager>().lose)
             dead = true;
         }
 
@@ -123,7 +124,6 @@ public class Player : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
-
         Objectbackpack = Objectbag;
         if (actions.Count >= 4||actions.Count-2>=Weaponbackpack.Count)
         {
@@ -135,7 +135,6 @@ public class Player : MonoBehaviour
             backpack = Weaponbackpack;
             backpackisweapon=true;
         }
-
         if (stepturns == -1)//-1���Ĵ��� 
         {
             for (int i = 0; i < 4; i++)
@@ -153,14 +152,20 @@ public class Player : MonoBehaviour
         {
             if (!backpackisweapon) 
             {
-                if (Objectused.Contains(actions[3])) 
+                if (actions.Count >= 4) 
+                {
+                if (Weaponbackpack.Count==1&&Objectused.Contains(actions[3])) 
                 {
                     actions.Remove(actions[3]);
                 }
+                }
+                if (actions.Count >= 5) 
+                {
                 if (Objectused.Contains(actions[4]))
                 {
                     actions.Remove(actions[4]);
                 }
+                } 
             }
         }
    
@@ -197,10 +202,10 @@ public class Player : MonoBehaviour
     {
         if (!attackedthisstep) 
         {
+        attackedthisstep = true;
         Debug.Log("attacked");
         GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().attacked=false;
         GameObject.Find("step" + stepturns).GetComponent<stepButton>().thisstep.GetComponent<WeaponBase>().shooted=false;
-        attackedthisstep = true;
         }
     }
     public void finish() 

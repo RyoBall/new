@@ -15,7 +15,6 @@ public class havechanger : havebase
     {
         onmouse = false;
         onmousetime = 0;
-        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
         GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
    

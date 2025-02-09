@@ -146,15 +146,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5ea1943b66576488949f22068126e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
-  step: 0
+  step: 2
   range: 0
   time: 0
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 4482584629828353200, guid: a50d0bbdd34214c4fb2a7005126024bf, type: 3}
 --- !u!1 &4707728686785574824
 GameObject:
@@ -342,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d5ea1943b66576488949f22068126e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
@@ -351,6 +357,10 @@ MonoBehaviour:
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 4482584629828353200, guid: a50d0bbdd34214c4fb2a7005126024bf, type: 3}
 --- !u!61 &4080660619466954223
 BoxCollider2D:

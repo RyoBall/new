@@ -11,6 +11,7 @@ public class hookEntity : EntityBase
         if ((transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == 1) || (transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == -1))
         {
             Player.Instance.hooknotattached = true;
+            Player.Instance.stepturns++;
             Destroy(gameObject);
         }
     }
@@ -19,20 +20,15 @@ public class hookEntity : EntityBase
     {
         if (collision.tag == "Enemy")
         {
-        for (; true;)
-        {
-            int i = Random.Range(0, GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys.Count);
-            if (GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys[i].GetComponent<enemy>().currentposition == collision.GetComponent<enemy>().currentposition && !GameObject.Find("levelmanager").GetComponent<levelmanager>().enemys[i].GetComponent<enemy>().dead)
+            if (!collision.GetComponent<enemy>().dead)
             {
                 collision.gameObject.GetComponent<enemy>().health -= damage;
                 collision.gameObject.GetComponent<enemy>().ismoving =true;
                 collision.gameObject.GetComponent<enemy>().dir=Player.Instance.facingdir*(-1);
                 collision.gameObject.GetComponent<enemy>().step= (collision.gameObject.GetComponent<enemy>().currentposition-Player.Instance.currentposition)*Player.Instance.facingdir-1;
                 Player.Instance.hookattached = true;
-                break;
+                Destroy(gameObject);
             }
-        }
-            Destroy(gameObject);
         }
         /*if (transform.position.x >= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == 1 || transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == -1)
         {

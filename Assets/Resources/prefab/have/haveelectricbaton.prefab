@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7535\u68CD\n\n\u653B\u51FB 2\n\n\u8303\u56F4 \u524D\u65B91\u683C\n\n\u7279\u6548
-    \u654C\u4EBA\u8BE5\u56DE\u5408\u5185\u6389\u88402*\u5269\u4F59\u6B65\u6570\n\n\u5360\u7528\u6B65\u6570\nO"
+  m_text: "\u7535\u68CD\n\n\u653B\u51FB 1\n\n\u8303\u56F4 \u524D\u65B91\u683C\n\n\u7279\u6548
+    \u654C\u4EBA\u8BE5\u56DE\u5408\u5185\u5269\u4F59\u6BCF\u6B65\u6389\u88403(\u4E0D\u53EF\u53E0\u52A0)\n\n\u5360\u7528\u6B65\u6570\nO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8de58b2388df6441bff52534081bc57, type: 2}
   m_sharedMaterial: {fileID: -3431228350907918059, guid: c8de58b2388df6441bff52534081bc57, type: 2}

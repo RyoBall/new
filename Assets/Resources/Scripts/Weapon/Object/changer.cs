@@ -28,7 +28,7 @@ public class changer : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
-        step = 4;
+        step = 1;
     }
 
     // Update is called once per frame

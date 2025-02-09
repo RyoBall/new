@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b6039aed97040449c1161059046a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
@@ -155,7 +156,12 @@ MonoBehaviour:
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 0}
+  tip: {fileID: 0}
   targetposition: 0
 --- !u!1 &4707728686785574824
 GameObject:
@@ -342,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b6039aed97040449c1161059046a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
@@ -351,7 +358,12 @@ MonoBehaviour:
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 0}
+  tip: {fileID: 0}
   targetposition: 0
 --- !u!114 &-326412217525427462
 MonoBehaviour:
@@ -375,7 +387,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ec67404e5ec9cfe4c920009c087d2283, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

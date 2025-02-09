@@ -43,7 +43,7 @@ public class sword : WeaponBase
     void Start()
     {
         step = 1;
-        attack = 2;
+        attack = 3;
         range = 2;
         attacked = true;
     }

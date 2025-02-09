@@ -7,7 +7,7 @@ public class sniperrifle : WeaponBase
     private void Start()
     {
         shooted = true;
-        step = 4;
+        step = 3;
         attack = 10;
         range = 10;
     }

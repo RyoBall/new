@@ -34,6 +34,10 @@ public class defendenemy : enemy
         animator.SetBool("havedefend", havedefense);
         base.Update();
     }
+    public override void startdie()
+    {
+        notfinished = true;
+    }
 
     private new void Start()
     {

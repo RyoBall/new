@@ -17,6 +17,7 @@ public class hook : WeaponBase
     // Start is called before the first frame update
     void Start()
     {
+        hook = true;
         shooted = true;
         step = 1;
         range = 5;

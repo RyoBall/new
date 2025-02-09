@@ -43,7 +43,7 @@ public class electricbaton : WeaponBase
     void Start()
     {
         attacked = true;
-        attack = 2;
+        attack = 1;
         range = 1;
         step = 1;   
     }

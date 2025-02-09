@@ -18,7 +18,10 @@ public class gameenter : MonoBehaviour
     }
     public void pressed()
     {
+        if(levelmanager.nowlevel==0)
         SceneManager.LoadScene("level1");
+        else
+        SceneManager.LoadScene("level"+levelmanager.nowlevel);
     }
 
     public void QuitGame()

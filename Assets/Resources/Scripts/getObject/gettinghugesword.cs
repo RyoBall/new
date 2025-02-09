@@ -11,7 +11,7 @@ public class gettinghugesword : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         onmousetime = 0;
         onmouse = false;
-        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+        
         GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
 
@@ -27,7 +27,7 @@ public class gettinghugesword : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
         if (onmousetime > 0.5f)
         {
-            GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
+            
             GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
         }
     }

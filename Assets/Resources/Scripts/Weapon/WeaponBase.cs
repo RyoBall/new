@@ -73,6 +73,14 @@ public class WeaponBase : MonoBehaviour
     }
     public virtual void pressed(string name) //按下时要执行的函数
     {
+        if (GetComponentInParent<stepButton>().stepname == name)
+        {
+            GetComponentInParent<stepButton>().choiceclear = false;
+            GetComponentInParent<stepButton>().pressed = false;
+            GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+            GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
+            Destroy(transform.parent.gameObject);
+        }
         GetComponentInParent<stepButton>().havestep = true;
         GetComponentInParent<stepButton>().pressed = false;
         GetComponentInParent<stepButton>().stepname = name;

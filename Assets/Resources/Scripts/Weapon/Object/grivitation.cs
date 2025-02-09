@@ -18,7 +18,7 @@ public class grivitation : WeaponBase
         else
         {
             base.pressed("grivitation");
-            Player.Instance.Objectused.Add("grivatation");
+            Player.Instance.Objectused.Add("grivitation");
         }
     }
     // Start is called before the first frame update

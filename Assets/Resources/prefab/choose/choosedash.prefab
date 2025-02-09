@@ -276,7 +276,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u94BB\u5934\n\n\u653B\u51FB 3\n\n\u8303\u56F4 \u524D\u65B93\u683C\n\n\u7279\u6548
-    \u524D\u8FDB\u4E09\u683C\uFF0C\u5BF9\u8DEF\u5F84\u4E0A\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3\n\n\u5360\u7528\u6B65\u6570\nOO"
+    \u524D\u8FDB\u4E09\u683C\uFF0C\u5BF9\u8DEF\u5F84\u4E0A\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3(\u4E0D\u53EF\u5C06\u654C\u4EBA\u6240\u5728\u683C\u4F5C\u4E3A\u7EC8\u70B9)\n\n\u5360\u7528\u6B65\u6570\nOO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8de58b2388df6441bff52534081bc57, type: 2}
   m_sharedMaterial: {fileID: -3431228350907918059, guid: c8de58b2388df6441bff52534081bc57, type: 2}

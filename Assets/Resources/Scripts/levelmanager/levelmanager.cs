@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class levelmanager : MonoBehaviour
 {
+    public static int nowlevel;
     public List<GameObject> enemys;
     public static bool deathnotechoosing;
     public static bool changerchoosing;
@@ -21,18 +22,21 @@ public class levelmanager : MonoBehaviour
     public bool notfinished;//�����Ƿ�������
     public static bool stepnext;
     public float loadtime;
+    public static bool entityexist;
+    public static bool endgame;
     // Start is called before the first frame update
     void Start()
     {
+
         choosecard = true;
         if (!Player.Weaponbag.Contains("knife")&&!notfirstplay) 
         {
             Player.Wholebackpack.Add("knife");
             Player.Weaponbag.Add("knife");
-            Player.Wholebackpack.Add("sword");
-            Player.Weaponbag.Add("sword");
             Player.Wholebackpack.Add("bow");
             Player.Weaponbag.Add("bow");
+            Player.Wholebackpack.Add("sword");
+            Player.Weaponbag.Add("sword");
             notfirstplay = true;
         }
     }
@@ -40,10 +44,7 @@ public class levelmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.Instance.health <= 0) 
-        {
-            lose = true;
-        }
+        nowlevel=currentlevel;
         if (stepnext) 
         {
             loadtime += Time.deltaTime;
@@ -70,7 +71,7 @@ public class levelmanager : MonoBehaviour
         notfinished = false;
         }
         notfinish:
-        if (Player.Instance.stepturns == 5 && !notfinished) 
+        if (Player.Instance.stepturns == 5 && !notfinished&&!entityexist) 
         {
             Player.Instance.stepturns = -1;
             Player.Instance.turn++;
@@ -90,10 +91,19 @@ public class levelmanager : MonoBehaviour
             }
         }
         win = true;
+        goto win;
     nowin:
+        if (Player.Instance.health <= 0) 
+        {
+            lose = true;
+        }
+    win:
         if (win) 
         {
-           
+                if (currentlevel == 8) 
+                {
+                    SceneManager.LoadScene("endScene");
+                }
         };
         }
     }

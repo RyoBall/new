@@ -259,8 +259,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6065182181670604464}
-        m_TargetAssemblyTypeName: gettingbow, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: gettingcharger, Assembly-CSharp
+        m_MethodName: pressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

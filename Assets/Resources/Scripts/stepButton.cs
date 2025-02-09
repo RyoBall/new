@@ -85,9 +85,51 @@ public class stepButton : MonoBehaviour
         //选定一个选项清理剩余的选项
         if (laststepname != stepname) 
         {
-            if (Player.Instance.Objectbackpack.Contains(laststepname)) 
+            if (Player.Instance.Objectused.Contains(laststepname)) 
             {
-                Player.Instance.Objectbackpack.Remove(laststepname);
+                Player.Instance.Objectused.Remove(laststepname);
+            }
+            if (laststepname == "left") 
+            {
+                for (int i = stepturns - 1; i <= 3; i++)
+                {
+                    Player.Instance.stepposition[i]++;
+                }
+                for (int i = stepturns - 1; i <= 3; i++)
+                {
+                    if (GameObject.Find("step" + (i+1)).GetComponent<stepButton>().stepname != "left")
+                        Player.Instance.stepfacingdir[i] = 1;
+                    else
+                        break;
+                }
+            }
+            if (laststepname == "right") 
+            {
+                for (int i = stepturns - 1; i <= 3; i++)
+                {
+                    Player.Instance.stepposition[i]--;
+                }
+                for (int i = stepturns - 1; i <= 3; i++)
+                {
+                    if (GameObject.Find("step" + (i+1)).GetComponent<stepButton>().stepname != "right")
+                        Player.Instance.stepfacingdir[i] = -1;
+                    else
+                        break;
+                }
+            }
+            if (laststepname == "spring") 
+            {
+                for (int i = stepturns-1; i <= 3; i++)
+                {
+                    Player.Instance.stepposition[i]-=2*Player.Instance.stepfacingdir[stepturns];
+                }
+            }
+            if(laststepname == "spring") 
+            {
+                for (int i = stepturns-1; i <= 3; i++)
+                {
+                    Player.Instance.stepposition[i] -= 2 * Player.Instance.stepfacingdir[stepturns];
+                }
             }
             if (stepname != null) 
             {
@@ -163,7 +205,7 @@ public class stepButton : MonoBehaviour
                 {
                     Destroy(thisstep);
                 }
-                transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", true);
+                transform.Find("normalbutton").GetComponent<Animator>().SetBool("IsSelected", true);
                 Grparrow.SetActive(true);
                 Grpweapon.SetActive(true);
                 for(int i=0;i<transforms.Count&&i<Player.Instance.actions.Count;i++)
@@ -171,13 +213,13 @@ public class stepButton : MonoBehaviour
             }
             if (!pressed) 
             {
-                transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false);
-                Grparrow.SetActive(false);
-                Grpweapon.SetActive(false);
+                transform.Find("normalbutton").GetComponent<Animator>().SetBool("IsSelected", false);
                 for (int i=0;i<transforms.Count&&i < Player.Instance.actions.Count; i++)
                 Destroy(transform.Find(Player.Instance.actions[i]+"(Clone)").gameObject);
                 havestep = false;
                 stepname = null;
+                Grparrow.SetActive(false);
+                Grpweapon.SetActive(false);
             }
         }
     }

@@ -11,7 +11,7 @@ public class gettingcharger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         onmousetime = 0;
         onmouse = false;
-        GetComponentInChildren<iconbase>(true).gameObject.SetActive(false);
+        
         GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(false);
     }
 
@@ -27,7 +27,7 @@ public class gettingcharger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
         if (onmousetime > 0.5f)
         {
-            GetComponentInChildren<iconbase>(true).gameObject.SetActive(true);
+            
             GetComponentInChildren<iconbackgroundbase>(true).gameObject.SetActive(true);
         }
     }
@@ -38,9 +38,9 @@ public class gettingcharger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     // Update is called once per frame
-   void pressed()
+   public void pressed()
     {
-        Player.Instance.actions.Add("changer");
+        Player.Instance.actions.Add("charger");
         Player.Instance.stepturns = 0;
     }
 }

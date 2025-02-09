@@ -6,7 +6,7 @@ public class lightning : WeaponBase
 {
     public override void pressed(string name)
     {
-        if (Player.Instance.Objectused.Contains("grivitation"))
+        if (Player.Instance.Objectused.Contains("lightning"))
         {
             GetComponentInParent<stepButton>().havestep = false;
             GetComponentInParent<stepButton>().stepname = null;
@@ -16,8 +16,9 @@ public class lightning : WeaponBase
         }
         else
         {
-            base.pressed("grivitation");
-            Player.Instance.Objectused.Add("grivatation");
+            base.pressed("lightning");
+            if (GetComponentInParent<stepButton>().stepname != null)
+                Player.Instance.Objectused.Add("lightning");
         }
     }
     // Start is called before the first frame update

@@ -52,8 +52,10 @@ public class EntityBase : MonoBehaviour
     public virtual void function() 
     {
         rb.velocity = new Vector2(20*Player.Instance.facingdir,0);
+        levelmanager.entityexist = true;
         if((transform.position.x>=GameObject.Find("platform"+targetposition).transform.position.x&&Player.Instance.facingdir==1)|| (transform.position.x <= GameObject.Find("platform" + targetposition).transform.position.x && Player.Instance.facingdir == -1)) 
         {
+            levelmanager.entityexist = false;
             Destroy(gameObject);
         }
     }
@@ -63,6 +65,7 @@ public class EntityBase : MonoBehaviour
         {
             if (!collision.GetComponent<enemy>().dead) 
             {
+            levelmanager.entityexist = false;
             collision.gameObject.GetComponent<enemy>().health -= damage;
             Debug.Log("attach");
             Destroy(gameObject);

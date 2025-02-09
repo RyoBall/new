@@ -5,6 +5,7 @@ using UnityEngine;
 public class restoreenemy : enemy
 {
     public bool restore;
+    public bool haverestored;
     public override void Move(int step, int dir)
     {
         base.Move(step, dir);
@@ -17,9 +18,14 @@ public class restoreenemy : enemy
 
     public override void Update()
     {
-       
-        if (Player.Instance.stepturns == 5 && !dead) 
+        if (Player.Instance.stepturns == -1 && !dead)
         {
+            notfinished = true;
+            haverestored = false;
+        }
+        if (Player.Instance.stepturns == 5 && !dead&&!haverestored) 
+        {
+            haverestored=true;
             restore = true;
             notfinished = true;
         }

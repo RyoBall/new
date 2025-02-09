@@ -39,6 +39,10 @@ public class platformsEnemyChec : MonoBehaviour
                 PlayerAttackHere = false;
                 GameObject.Find("step" + Player.Instance.stepturns).transform.Find(GameObject.Find("step" + Player.Instance.stepturns).GetComponent<stepButton>().stepname+"(Clone)").gameObject.GetComponent<WeaponBase>().attackedenemy++;
             }
+            if (other.GetComponent<enemy>().dead) 
+            {
+                EnemyHere= false;
+            }
         }
         if (other.tag == "Player") 
         {

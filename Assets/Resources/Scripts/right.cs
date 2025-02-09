@@ -35,6 +35,16 @@ public class right : MonoBehaviour
     }
     public void pressed() //按下时要执行的函数
     {
+        if (GetComponentInParent<stepButton>().stepname == "right")
+        {
+            GetComponentInParent<stepButton>().choiceclear = false;
+            GetComponentInParent<stepButton>().pressed = false;
+            GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+            GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
+            Destroy(transform.parent.gameObject);
+        }
+        else 
+        {
         GetComponentInParent<stepButton>().havestep = true;
         GetComponentInParent<stepButton>().pressed = false;
         GetComponentInParent<stepButton>().stepname = "right";
@@ -42,12 +52,16 @@ public class right : MonoBehaviour
         GetComponentInParent<stepButton>().Grparrow.SetActive(false);
         GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
         GetComponentInParent<stepButton>().transform.Find("normalbutton").GetComponent<Animator>().SetBool("isSelected", false); ;
-        if (GetComponentInParent<stepButton>().stepturns != 4) 
-        {
-            for(int i= GetComponentInParent<stepButton>().stepturns; i <= 3; i++) 
+            for (int i = GetComponentInParent<stepButton>().stepturns-1; i <= 3; i++)
             {
                 Player.Instance.stepposition[i]++;
-                Player.Instance.stepfacingdir[i]=1;
+            }
+            for (int i = GetComponentInParent<stepButton>().stepturns-1; i <= 3; i++)
+            {
+                if (GameObject.Find("step" + (i+1)).GetComponent<stepButton>().stepname != "left")
+                    Player.Instance.stepfacingdir[i] = 1;
+                else
+                    break;
             }
         }
         Destroy(gameObject);

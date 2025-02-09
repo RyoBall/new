@@ -146,15 +146,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f838bbe3d9aab1844babbe5ae6d82bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
-  step: 3
+  step: 2
   range: 0
   time: 0
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 0}
   enemycheced: 0
 --- !u!1 &4707728686785574824
@@ -343,15 +348,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f838bbe3d9aab1844babbe5ae6d82bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  set: 0
   used: 0
   shooted: 0
   choosing: 0
-  step: 3
+  step: 2
   range: 0
   time: 0
   attack: 0
   attackedenemy: 0
   attacked: 0
+  mingzhong: 0
+  start: 0
+  finish: 0
+  hook: 0
   Entity: {fileID: 0}
   enemycheced: 0
 --- !u!61 &374882016935189322

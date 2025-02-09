@@ -5,57 +5,62 @@ using UnityEngine;
 
 public class spring : WeaponBase
 {
+    public GameObject tip;  
     public override void pressed(string name)
     {
-        if (Player.Instance.Objectused.Contains("spring")) 
+        /*if (Player.Instance.Objectused.Contains("spring")) 
         {
             GetComponentInParent<stepButton>().havestep = false;
             GetComponentInParent<stepButton>().stepname = null;
+            GetComponentInParent<stepButton>().pressed = false;
             GetComponentInParent<stepButton>().stepenough = false;
             GetComponentInParent<stepButton>().choiceclear = false;
+            GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+            GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
             Debug.Log("used!");
         }
         else 
         {
-            /*for (int i = GetComponentInParent<stepButton>().stepturns; i <= 3; i++)
-            {
-                Player.Instance.stepposition[i] += Player.Instance.stepfacingdir[GetComponentInParent<stepButton>().stepturns] * 2;
-            }
-            base.pressed("spring");
-        Player.Instance.Objectused.Add("spring");*/
             if (GameObject.Find("platform" + (Player.Instance.stepposition[GetComponentInParent<stepButton>().stepturns - 1] + range * Player.Instance.facingdir)) == null)
             {
                 GetComponentInParent<stepButton>().havestep = false;
                 GetComponentInParent<stepButton>().stepname = null;
+                GetComponentInParent<stepButton>().pressed = false;
                 GetComponentInParent<stepButton>().stepenough = false;
                 GetComponentInParent<stepButton>().choiceclear = false;
+                GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+                GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
                 Debug.Log("no target");
             }
             else
             {
-                if (GameObject.Find("platform" + (Player.Instance.stepposition[GetComponentInParent<stepButton>().stepturns-1] + range * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
+                /*if (GameObject.Find("platform" + (Player.Instance.stepposition[GetComponentInParent<stepButton>().stepturns-1] + range * Player.Instance.facingdir)).GetComponentInChildren<platformsEnemyChec>().EnemyHere)
                 {
                     GetComponentInParent<stepButton>().havestep = false;
                     GetComponentInParent<stepButton>().stepname = null;
+                    GetComponentInParent<stepButton>().pressed = false;
                     GetComponentInParent<stepButton>().stepenough = false;
                     GetComponentInParent<stepButton>().choiceclear = false;
+                    GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+                    GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
                     Debug.Log("enemy here");
-                }
-                else
+                }*/
+        base.pressed("spring");
+        if (GetComponentInParent<stepButton>().stepname != null)
+        {
+            if (GetComponentInParent<stepButton>().stepturns != 4)
+            {
+                for (int i = GetComponentInParent<stepButton>().stepturns - 1; i <= 3; i++)
                 {
-                    if (GetComponentInParent<stepButton>().stepturns != 4) 
-                    {
-                    for (int i = GetComponentInParent<stepButton>().stepturns; i <= 3; i++)
-                    {
-                        Player.Instance.stepposition[i] += Player.Instance.stepfacingdir[GetComponentInParent<stepButton>().stepturns] * 2;
-                    }
-                    }
-                    base.pressed("spring");
+                    Player.Instance.stepposition[i] += Player.Instance.stepfacingdir[GetComponentInParent<stepButton>().stepturns] * 2;
                 }
             }
             Player.Instance.Objectused.Add("spring");
         }
-    }
+
+    
+
+}
 
            public int targetposition;
     // Start is called before the first frame update

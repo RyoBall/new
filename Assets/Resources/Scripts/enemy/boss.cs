@@ -15,6 +15,7 @@ public class boss : enemy
     public bool restore;
     public bool portal;
     public bool act;
+    public bool interfereset;
     public override void Move(int step, int dir)
     {
         base.Move(step, dir);
@@ -24,7 +25,8 @@ public class boss : enemy
     {
         if (levelmanager.deathnotechoosing)
         {
-            Debug.Log("noeffect");
+            levelmanager.deathnotechoosing = false;
+            Player.Instance.stepturns++;
         }
         if (levelmanager.changerchoosing)
         {
@@ -55,6 +57,7 @@ public class boss : enemy
         }
         if (Player.Instance.stepturns==5&&!act)
         {
+            interfereset = false;
             if (!havedefense)
                 currentmode = (mode)Random.Range(0, 4);
             else
@@ -81,15 +84,22 @@ public class boss : enemy
                     break;
             }
         }
-        if (interfereing)
+        if (health != healthmax && havedefense)
+        {
+            health = healthmax;
+            havedefense = false;
+        }
+        if (interfereing&&!interfereset)
         {
             GameObject.Find("step4").GetComponent<stepButton>().bestepped = true;
             GameObject.Find("step3").GetComponent<stepButton>().bestepped = true;
+            interfereset = true;
         }
-        else 
+        else if(!interfereing&&!interfereset)
         {
             GameObject.Find("step3").GetComponent<stepButton>().bestepped = false;
             GameObject.Find("step4").GetComponent<stepButton>().bestepped = false;   
+            interfereset = true;
         }
         base.Update();
     }

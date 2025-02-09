@@ -20,7 +20,7 @@ public class knife : WeaponBase
         attacked = true;
         step = 1;
         range = 1;
-        attack = 4;
+        attack = 6;
     }
 
     // Update is called once per frame
