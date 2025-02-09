@@ -37,7 +37,6 @@ public class boss : enemy
             Player.Instance.currentposition = position;
             Player.Instance.transform.position = trans;
             Player.Instance.stepturns++;
-            
         }
 
     }
@@ -54,10 +53,10 @@ public class boss : enemy
             notfinished = true;
             act = false;
             lastturn = Player.Instance.turn;
+            interfereset = false;
         }
         if (Player.Instance.stepturns==5&&!act)
         {
-            interfereset = false;
             if (!havedefense)
                 currentmode = (mode)Random.Range(0, 4);
             else

@@ -37,6 +37,8 @@ public class levelmanager : MonoBehaviour
             Player.Weaponbag.Add("bow");
             Player.Wholebackpack.Add("sword");
             Player.Weaponbag.Add("sword");
+            Player.Wholebackpack.Add("charger");
+            Player.Objectbag.Add("charger");
             notfirstplay = true;
         }
     }
