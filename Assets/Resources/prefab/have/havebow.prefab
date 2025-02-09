@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4155909465626235493}
   - component: {fileID: -243875401963051182}
   - component: {fileID: 7367359983058965757}
-  - component: {fileID: 7847101706663773902}
   m_Layer: 5
   m_Name: havebow
   m_TagString: Untagged
@@ -198,18 +197,6 @@ BoxCollider2D:
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &7367359983058965757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3023744575172537394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 788a64f0562094245884ed609d6916bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7847101706663773902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
