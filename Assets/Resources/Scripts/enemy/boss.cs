@@ -16,6 +16,9 @@ public class boss : enemy
     public bool portal;
     public bool act;
     public bool interfereset;
+    public bool goingtohavedefend;
+    public bool realdefense;
+    public int starthealth;
     public override void Move(int step, int dir)
     {
         base.Move(step, dir);
@@ -65,7 +68,9 @@ public class boss : enemy
             switch (currentmode) 
             {
                 case mode.defend:
+                    starthealth = (int)health;
                     defend = true;
+                    goingtohavedefend = true;
                     havedefense = true;
                     interfereing = false;
                     break;
@@ -83,10 +88,16 @@ public class boss : enemy
                     break;
             }
         }
-        if (health != healthmax && havedefense)
+        if (goingtohavedefend == true && Player.Instance.stepturns == -1) 
         {
-            health = healthmax;
+            realdefense = true;
+            goingtohavedefend = false;
+        }
+        if (health != starthealth && realdefense)
+        {
+            health = starthealth;   
             havedefense = false;
+            realdefense = false;
         }
         if (interfereing&&!interfereset&&Player.Instance.stepturns==0)
         {
