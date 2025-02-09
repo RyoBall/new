@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_0"
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 677
+        width: 300
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13573c42dea107458ff75383818038d
+      internalID: 1302856865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_1"
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 677
+        width: 300
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b061b3747f7f44a97a726658af40c3
+      internalID: 1992864254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_2"
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 602
+        width: 300
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ea904f0de41854cb6e591822f58984
+      internalID: 846405351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +169,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_0": 1302856865
+      "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_1": 1992864254
+      "\u72D9\u51FB\u67AA\uFF08\u5B50\u5F39\uFF09_2": 846405351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

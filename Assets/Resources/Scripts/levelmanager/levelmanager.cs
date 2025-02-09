@@ -24,6 +24,9 @@ public class levelmanager : MonoBehaviour
     public float loadtime;
     public static bool entityexist;
     public static bool endgame;
+    public static bool stepnotenoughtip;
+    public GameObject choosetip;
+    public GameObject steptip;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +36,12 @@ public class levelmanager : MonoBehaviour
         {
             Player.Wholebackpack.Add("knife");
             Player.Weaponbag.Add("knife");
-            Player.Wholebackpack.Add("bow");
-            Player.Weaponbag.Add("bow");
-            Player.Wholebackpack.Add("sword");
-            Player.Weaponbag.Add("sword");
-            Player.Wholebackpack.Add("charger");
-            Player.Objectbag.Add("charger");
+            Player.Wholebackpack.Add("sniperrifle");
+            Player.Weaponbag.Add("sniperrifle");
+            Player.Wholebackpack.Add("hook");
+            Player.Weaponbag.Add("hook");
+            Player.Wholebackpack.Add("spring");
+            Player.Objectbag.Add("spring");
             notfirstplay = true;
         }
     }
@@ -46,6 +49,20 @@ public class levelmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (stepnotenoughtip)
+        {
+            stepnotenoughtip = false;
+            steptip.SetActive(true);
+            steptip.GetComponent<tiptxt>().tiping=true;
+        }
+        if (changerchoosing || deathnotechoosing)
+        {
+            choosetip.SetActive(true);
+        }
+        else 
+        {
+            choosetip.SetActive(false);
+        }
         nowlevel=currentlevel;
         if (stepnext) 
         {
@@ -61,7 +78,7 @@ public class levelmanager : MonoBehaviour
         {
             notfinished = true;
         }
-        if (Player.Instance.stepturns == 5) 
+        if (Player.Instance.stepturns >= 5) 
         {
         for(int i = 0; i < enemys.Count; i++) 
         {

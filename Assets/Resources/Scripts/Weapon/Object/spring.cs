@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class spring : WeaponBase
 {
-    public GameObject tip;  
+    public GameObject tip;
+    public bool springed;
     public override void pressed(string name)
     {
-        /*if (Player.Instance.Objectused.Contains("spring")) 
+        if (Player.Instance.Objectused.Contains("spring")) 
         {
             GetComponentInParent<stepButton>().havestep = false;
             GetComponentInParent<stepButton>().stepname = null;
@@ -19,7 +20,7 @@ public class spring : WeaponBase
             GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
             Debug.Log("used!");
         }
-        else 
+        /*else 
         {
             if (GameObject.Find("platform" + (Player.Instance.stepposition[GetComponentInParent<stepButton>().stepturns - 1] + range * Player.Instance.facingdir)) == null)
             {
@@ -73,8 +74,9 @@ public class spring : WeaponBase
     // Update is called once per frame
     void Update()
     {
-        if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)
+        if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns&&!springed)
         {
+            springed = true;
             if (Player.Instance.facingdir > 0)
             {
                 if (Player.Instance.stepturns == GetComponentInParent<stepButton>().stepturns)

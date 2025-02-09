@@ -12,6 +12,9 @@ public class charger : WeaponBase
             GetComponentInParent<stepButton>().stepname = null;
             GetComponentInParent<stepButton>().stepenough = false;
             GetComponentInParent<stepButton>().choiceclear = false;
+            GetComponentInParent<stepButton>().pressed = false;
+            GetComponentInParent<stepButton>().Grparrow.SetActive(false);
+            GetComponentInParent<stepButton>().Grpweapon.SetActive(false);
             Debug.Log("used!");
         }
         else

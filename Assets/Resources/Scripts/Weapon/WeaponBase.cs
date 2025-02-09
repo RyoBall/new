@@ -101,7 +101,7 @@ public class WeaponBase : MonoBehaviour
                         GetComponentInParent<stepButton>().stepname = null;
                         GetComponentInParent<stepButton>().stepenough = false;
                         GetComponentInParent<stepButton>().choiceclear=false;
-                        Debug.Log("not enough step");
+                        levelmanager.stepnotenoughtip = true;
                         break;
                     }
                 }

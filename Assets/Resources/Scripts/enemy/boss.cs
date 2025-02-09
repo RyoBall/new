@@ -53,7 +53,6 @@ public class boss : enemy
             notfinished = true;
             act = false;
             lastturn = Player.Instance.turn;
-            interfereset = false;
         }
         if (Player.Instance.stepturns==5&&!act)
         {
@@ -62,6 +61,7 @@ public class boss : enemy
             else
                 currentmode = (mode)Random.Range(1, 4);
             act = true;
+            interfereset = false;
             switch (currentmode) 
             {
                 case mode.defend:
@@ -88,13 +88,13 @@ public class boss : enemy
             health = healthmax;
             havedefense = false;
         }
-        if (interfereing&&!interfereset)
+        if (interfereing&&!interfereset&&Player.Instance.stepturns==0)
         {
             GameObject.Find("step4").GetComponent<stepButton>().bestepped = true;
             GameObject.Find("step3").GetComponent<stepButton>().bestepped = true;
             interfereset = true;
         }
-        else if(!interfereing&&!interfereset)
+        else if(!interfereing&&!interfereset && Player.Instance.stepturns == 0)
         {
             GameObject.Find("step3").GetComponent<stepButton>().bestepped = false;
             GameObject.Find("step4").GetComponent<stepButton>().bestepped = false;   
@@ -106,8 +106,8 @@ public class boss : enemy
     // Start is called before the first frame update
     new void Start()
     {
-            health = 40;
-            healthmax = 40; 
+            health = 50;
+            healthmax = 50; 
             lasthealth = health;
         notfinished = true;
     }

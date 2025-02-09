@@ -1962,6 +1962,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4996064661886060275, guid: 0181da81103d95343b6096a4e5af9d06, type: 3}
   m_PrefabInstance: {fileID: 1106032510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1106032512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7992651748337375672, guid: 0181da81103d95343b6096a4e5af9d06, type: 3}
+  m_PrefabInstance: {fileID: 1106032510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1106032513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1490713628424755654, guid: 0181da81103d95343b6096a4e5af9d06, type: 3}
+  m_PrefabInstance: {fileID: 1106032510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1110824118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2530,9 +2540,17 @@ PrefabInstance:
       value: levelmanager
       objectReference: {fileID: 0}
     - target: {fileID: 4719683186191487070, guid: 5ef57cc5ca81d504696ade07bc3ff24c, type: 3}
+      propertyPath: steptip
+      value: 
+      objectReference: {fileID: 1106032513}
+    - target: {fileID: 4719683186191487070, guid: 5ef57cc5ca81d504696ade07bc3ff24c, type: 3}
       propertyPath: maprange
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4719683186191487070, guid: 5ef57cc5ca81d504696ade07bc3ff24c, type: 3}
+      propertyPath: choosetip
+      value: 
+      objectReference: {fileID: 1106032512}
     - target: {fileID: 4719683186191487070, guid: 5ef57cc5ca81d504696ade07bc3ff24c, type: 3}
       propertyPath: currentlevel
       value: 4
